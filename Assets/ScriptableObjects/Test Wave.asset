@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7678c951a19110141b44b9a889bc1a34, type: 3}
+  m_Name: Test Wave
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 8309424091001049507, guid: 0c69a29e26c22b34991304431a9bd6e0, type: 3}
+  - {fileID: 7306945056317922985, guid: 0d4915386c66c7f4fbfeb01e6128d472, type: 3}
+  amounts: 0900000001000000
