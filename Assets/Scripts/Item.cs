@@ -14,14 +14,22 @@ public class Item : MonoBehaviour
     private Transform initialParent;
     private Tween carryTween;
 
+    private static int globalSpawnIndex;
+    private int spawnIndex;
+    private float zFightingStep = -0.001f;
+
+    void RepositionZ() => transform.position += (Vector3.forward * spawnIndex * zFightingStep);
+
     private void Awake()
     {
+        globalSpawnIndex++;
+        spawnIndex = globalSpawnIndex;
         initialParent = transform.parent;
     }
 
     private void Start()
     {
-        transform.DOMoveY(transform.position.y, 1f).From(transform.position.y + 10).SetEase(Ease.OutCubic).SetDelay(Random.Range(0, maxSpawnDelay));
+        transform.DOMoveY(transform.position.y, 1f).From(transform.position.y + 10).SetEase(Ease.OutCubic).SetDelay(Random.Range(0, maxSpawnDelay)).OnComplete(() => RepositionZ());
     }
 
     private void OnMouseDown()
@@ -29,14 +37,14 @@ public class Item : MonoBehaviour
         var playerScript = Familiar.Instance;
         if (carryTween.IsActive()) carryTween.Complete();
         transform.SetParent(playerScript.transform);
-        carryTween = transform.DOLocalMove(playerScript.carryTransform.localPosition, tweenDuration);
+        carryTween = transform.DOLocalMove(playerScript.carryTransform.localPosition, tweenDuration).OnComplete(() => RepositionZ());
     }
 
     private void OnMouseUp()
     {
         if (carryTween.IsActive()) carryTween.Complete();
         carryTween = transform.DOLocalMove(Familiar.Instance.dropTransform.localPosition, tweenDuration)
-            .OnComplete(()=>transform.SetParent(initialParent));
+            .OnComplete(() => { transform.SetParent(initialParent); RepositionZ(); });
     }
 
 }
