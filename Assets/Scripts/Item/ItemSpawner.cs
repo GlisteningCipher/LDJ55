@@ -53,12 +53,12 @@ public class ItemSpawner : MonoBehaviour
         SpawnWave(TestWave.item, TestWave.amount);
     }
 
-    public void SpawnWave(Item item, int amount)
+    public void SpawnWave(GameObject itemPrefab, int amount)
     {
-        Spawn(item, amount);
+        Spawn(itemPrefab, amount);
     }
 
-    public void Spawn(Item prefab, int amount = 1)
+    public void Spawn(GameObject itemPrefab, int amount = 1)
     {
         int loopSafety = 100;
         while (amount > 0 && --loopSafety >= 0)
@@ -71,7 +71,7 @@ public class ItemSpawner : MonoBehaviour
 
             Vector2 randomPos = (Vector2)transform.position - halfExtents + new Vector2(xOff, yOff) * bounds / granularity;
             Vector2 unitOffset = bounds / granularity * 0.5f;
-            Instantiate(prefab, randomPos + unitOffset, Quaternion.identity, transform);
+            Instantiate(itemPrefab, randomPos + unitOffset, Quaternion.identity, transform);
             --amount;
         }
         
@@ -79,7 +79,7 @@ public class ItemSpawner : MonoBehaviour
         {
             Debug.LogWarning("Spawn record cleared due to too many collisions. Consider spawning fewer items or increasing granularity.");
             ResetSpawnRecord();
-            Spawn(prefab, amount);
+            Spawn(itemPrefab, amount);
         }
     }
 
