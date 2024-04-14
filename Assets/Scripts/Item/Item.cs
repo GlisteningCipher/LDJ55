@@ -6,14 +6,14 @@ using DG.Tweening;
 
 public class Item : MonoBehaviour
 {
-    public bool IsGood => gameObject.CompareTag("ItemGood");
-    public bool IsBad => gameObject.CompareTag("ItemBad");
+    public bool IsGood = false;
 
     public UnityEvent OnCarry = default;
     public UnityEvent OnDrop = default;
 
     [SerializeField] float tweenDuration = 0.1f;
     [SerializeField] float maxSpawnDelay = 0f;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     private Transform initialParent;
     private Tween carryTween;
@@ -41,6 +41,7 @@ public class Item : MonoBehaviour
         transform.SetParent(playerScript.transform);
         carryTween = transform.DOLocalMove(playerScript.carryTransform.localPosition, tweenDuration);
         OnCarry.Invoke();
+        spriteRenderer.sortingOrder = 1;
     }
 
     private void OnMouseUp()
@@ -51,6 +52,7 @@ public class Item : MonoBehaviour
             {
                 transform.SetParent(initialParent);
                 OnDrop.Invoke();
+                spriteRenderer.sortingOrder = 0;
             });
     }
 
@@ -58,7 +60,12 @@ public class Item : MonoBehaviour
     {
         // For pseudo 3d effect
         // todo perf: do only if moving
-        t.position = new Vector3(t.position.x, t.position.y, 10 + t.position.y);
+        //t.position = new Vector3(t.position.x, t.position.y, 10 + t.position.y);
+    }
+
+    public void SetSprite(Sprite spr)
+    {
+        spriteRenderer.sprite = spr;
     }
 
 }

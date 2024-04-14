@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] Wave TestWave; //only for testing, use SpawnWave to spawn a wave instead
+    [SerializeField] Sprite[] itemSprites; //only for testing
     [SerializeField] bool runOnStart = true;
 
     [SerializeField] Vector2 bounds;
@@ -50,15 +51,24 @@ public class ItemSpawner : MonoBehaviour
     public void RunTestWave()
     {
         ClearWave();
-        SpawnWave(TestWave.item, TestWave.amount);
+        SpawnWave(TestWave.item, TestWave.amount, itemSprites[0], itemSprites[1..itemSprites.Length]);
     }
 
-    public void SpawnWave(GameObject itemPrefab, int amount)
+    public void SpawnWave(GameObject itemPrefab, int amount, Sprite goodItemSprite, Sprite[] badItemSprites)
     {
-        Spawn(itemPrefab, amount);
+        Spawn(itemPrefab, amount, goodItemSprite); //spawn one good item
+        amount -= 1;
+        for (int i = 0; i < badItemSprites.Length; i++)
+        {
+            var deductionAmount = Random.Range(0, amount + 1);
+            if (i == badItemSprites.Length - 1) deductionAmount = amount;
+            Spawn(itemPrefab, deductionAmount, badItemSprites[i]);
+            amount -= deductionAmount;
+        }
+
     }
 
-    public void Spawn(GameObject itemPrefab, int amount = 1)
+    public void Spawn(GameObject itemPrefab, int amount, Sprite spr)
     {
         int loopSafety = 100;
         while (amount > 0 && --loopSafety >= 0)
@@ -71,7 +81,8 @@ public class ItemSpawner : MonoBehaviour
 
             Vector2 randomPos = (Vector2)transform.position - halfExtents + new Vector2(xOff, yOff) * bounds / granularity;
             Vector2 unitOffset = bounds / granularity * 0.5f;
-            Instantiate(itemPrefab, randomPos + unitOffset, Quaternion.identity, transform);
+            var item = Instantiate(itemPrefab, randomPos + unitOffset, Quaternion.identity, transform);
+            item.GetComponent<Item>().SetSprite(spr);
             --amount;
         }
         
@@ -79,7 +90,7 @@ public class ItemSpawner : MonoBehaviour
         {
             Debug.LogWarning("Spawn record cleared due to too many collisions. Consider spawning fewer items or increasing granularity.");
             ResetSpawnRecord();
-            Spawn(itemPrefab, amount);
+            Spawn(itemPrefab, amount, spr);
         }
     }
 

@@ -847,6 +847,30 @@ PrefabInstance:
       propertyPath: TestWave
       value: 
       objectReference: {fileID: 11400000, guid: d8ef642e037b39e479958ff16f40eb59, type: 2}
+    - target: {fileID: 2850699826218567469, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
+      propertyPath: itemSprites.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850699826218567469, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
+      propertyPath: itemSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: b3a6534b585c68146bbe866dac410362, type: 3}
+    - target: {fileID: 2850699826218567469, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
+      propertyPath: itemSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fe7d342d66115245bf0cf355fbd8233, type: 3}
+    - target: {fileID: 2850699826218567469, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
+      propertyPath: itemSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a937952e45803e4d8e241374b3adb06, type: 3}
+    - target: {fileID: 2850699826218567469, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
+      propertyPath: itemSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: bd219f4ac73220941bd40c3027d115ad, type: 3}
+    - target: {fileID: 2850699826218567469, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
+      propertyPath: itemSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 841d87bc26b16c948b9114fd3f73216b, type: 3}
     - target: {fileID: 3376053114290018893, guid: d269e1df02e202243bb8402aa75a3d5e, type: 3}
       propertyPath: m_Name
       value: Spawner

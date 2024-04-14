@@ -6,5 +6,4 @@ using UnityEngine;
 public class Spell : ScriptableObject
 {
     public Wave[] waves = default;
-    public Item[] recipe = default;
 }
