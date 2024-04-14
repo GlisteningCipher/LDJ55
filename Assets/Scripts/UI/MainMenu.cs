@@ -20,6 +20,13 @@ public class MainMenu : MonoBehaviour
     public enum MenuState { Paused, Playing }
     public MenuState State = MenuState.Playing;
 
+    public static MainMenu Instance;
+
+    public void Awake()
+    {
+        Instance = this;
+    }
+
     public void Start()
     {
         _mainMenuContainer.SetActive(true);
@@ -31,6 +38,9 @@ public class MainMenu : MonoBehaviour
     [ContextMenu("Open Pause Menu")]
     public void OpenPauseMenu()
     {
+        if (State == MenuState.Paused)
+            return;
+
         AudioManager.Instance.SfxUiPause();
 
         _pauseContainer.SetActive(true);
@@ -73,6 +83,8 @@ public class MainMenu : MonoBehaviour
 
         _dimmerPanel.SetActive(false);
         _dimmerPanelBlockingPause.SetActive(false);
+
+        State = MenuState.Playing;
         // todo game logic because we are leaving from the gameplay view
     }
 

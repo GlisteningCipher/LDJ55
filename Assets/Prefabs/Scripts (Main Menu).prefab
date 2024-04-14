@@ -48,6 +48,51 @@ MonoBehaviour:
   _masterVolSlider: {fileID: 0}
   _musicVolSlider: {fileID: 0}
   _sfxVolSlider: {fileID: 0}
+--- !u!1 &2601571420077098861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668080976690944439}
+  - component: {fileID: 698291110618664996}
+  m_Layer: 0
+  m_Name: Hotkey Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1668080976690944439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601571420077098861}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9182875003711784464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698291110618664996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601571420077098861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e030ee1c6bba6c45ae3a8b68a1e6e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseHotkey: 27
 --- !u!1 &2679886072479550068
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +143,8 @@ MonoBehaviour:
   _dimmerPanelBlockingPause: {fileID: 0}
   _creditsContainer: {fileID: 0}
   _pauseContainer: {fileID: 0}
+  _uiPanelOpenTime: 0.5
+  _uiPanelCloseTime: 0.3
   State: 1
 --- !u!1 &8695624588955072557
 GameObject:
@@ -131,6 +178,7 @@ Transform:
   - {fileID: 5919443637076079730}
   - {fileID: 7037921393867799465}
   - {fileID: 4173454785787727912}
+  - {fileID: 1668080976690944439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &484432672178492514
