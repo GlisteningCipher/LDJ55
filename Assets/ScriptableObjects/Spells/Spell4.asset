@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f207166920ac24faab7c3e079c98f4, type: 3}
+  m_Name: Spell4
+  m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 11400000, guid: dc097b42aef12f9499ff4b9da5098b15, type: 2}
+  - {fileID: 11400000, guid: d006d77319b156e4094a445503efb941, type: 2}
+  - {fileID: 11400000, guid: 4ecbe0a87121cb74bb5f5733710aa11c, type: 2}

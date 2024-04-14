@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public Wave TestWave; //only for testing, use SpawnWave to spawn a wave instead
+    [SerializeField] Wave TestWave; //only for testing, use SpawnWave to spawn a wave instead
+    [SerializeField] bool runOnStart = true;
 
     [SerializeField] Vector2 bounds;
     [SerializeField] Vector2Int granularity;
@@ -27,6 +28,12 @@ public class ItemSpawner : MonoBehaviour
         }
         Gizmos.DrawWireCube(transform.position, new Vector3(bounds.x, bounds.y));
     }
+
+    private void Start()
+    {
+        if (runOnStart) RunTestWave();
+    }
+
     private void ResetSpawnRecord() => spawnRecord.Clear();
 
     [ContextMenu("Clear Wave")]
