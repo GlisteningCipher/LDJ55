@@ -31,18 +31,27 @@ public class MainMenu : MonoBehaviour
     [ContextMenu("Open Pause Menu")]
     public void OpenPauseMenu()
     {
-        State = MenuState.Paused;
-        _pauseContainer.SetActive(true);
-        _dimmerPanel.SetActive(true);
         AudioManager.Instance.SfxUiPause();
+
+        _pauseContainer.SetActive(true);
+        _pauseContainer.transform.DOKill();
+        _pauseContainer.transform.DOScale(1, _uiPanelOpenTime).From(Vector3.zero);
+
+        _dimmerPanel.SetActive(true);
+        State = MenuState.Paused;
     }
 
     public void BUTTON_ResumeClosePauseMenu()
     {
-        State = MenuState.Playing;
-        _pauseContainer.SetActive(false);
-        _dimmerPanel.SetActive(false);
         AudioManager.Instance.SfxUiMenuBack();
+
+        _pauseContainer.transform.DOKill();
+        _pauseContainer.transform.DOScale(0, _uiPanelCloseTime).OnComplete(() =>
+        {
+            State = MenuState.Playing;
+            _pauseContainer.SetActive(false);
+            _dimmerPanel.SetActive(false);
+        });
     }
 
     public void BUTTON_StartGame()
@@ -59,7 +68,8 @@ public class MainMenu : MonoBehaviour
     public void BUTTON_MainMenuOpen()
     {
         _mainMenuContainer.SetActive(true);
-        _pauseContainer.SetActive(false);
+        _pauseContainer.transform.DOKill();
+        _pauseContainer.transform.DOScale(0, _uiPanelCloseTime).OnComplete(() => _pauseContainer.SetActive(false));
 
         _dimmerPanel.SetActive(false);
         _dimmerPanelBlockingPause.SetActive(false);
