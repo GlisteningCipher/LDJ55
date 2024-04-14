@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2449830386798870418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7037921393867799465}
+  - component: {fileID: 4891078764309400569}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7037921393867799465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449830386798870418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9182875003711784464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4891078764309400569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449830386798870418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96e018f87bef7c41bd10cdcd0bb033b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 0}
+  _masterVolSlider: {fileID: 0}
+  _musicVolSlider: {fileID: 0}
+  _sfxVolSlider: {fileID: 0}
 --- !u!1 &2679886072479550068
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +94,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuContainer: {fileID: 0}
   _settingsContainer: {fileID: 0}
+  _dimmerPanel: {fileID: 0}
+  _dimmerPanelBlockingPause: {fileID: 0}
   _creditsContainer: {fileID: 0}
+  _pauseContainer: {fileID: 0}
+  State: 1
 --- !u!1 &8695624588955072557
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,5 +129,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5919443637076079730}
+  - {fileID: 7037921393867799465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
