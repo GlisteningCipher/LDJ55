@@ -13,6 +13,7 @@ public class MagicianHand : MonoBehaviour
 
     [Header("Hand and Shadow Settings")]
     public Vector3 farHandOffscreenOffset;
+    public Vector3 shadowStartSize;
     public Vector3 shadowGrowthSize;
     public float duration;
 
@@ -22,6 +23,7 @@ public class MagicianHand : MonoBehaviour
         {
             Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             GoToPosition(mouseWorld);
+
         }
     }
 
@@ -29,13 +31,20 @@ public class MagicianHand : MonoBehaviour
     {
         Vector2 height = new Vector3(shadowAppearance.transform.position.x, shadowAppearance.transform.position.y + farHandOffscreenOffset.y);
         Vector2 upDirection = shadowAppearance.transform.position + farHandOffscreenOffset;
-        handObject.SetActive(true);
+
+        handObject.transform.position = height;
 
         Sequence seq = DOTween.Sequence();
-        seq.Append(handObject.transform.DOLocalMove(shadowAppearance.transform.position, duration).From(height))
-        .Join(shadowAppearance.transform.DOScale(shadowGrowthSize, duration).OnStepComplete(ItemCollisionCheck))
-        .Append(handObject.transform.DOLocalMove(upDirection, duration).From(shadowAppearance.transform.position).OnStepComplete(RemoveItemFromHand))
-        .Join(shadowAppearance.transform.DOScale(Vector3.zero, 1));
+        //Starting State
+        seq.PrependInterval(5)
+           .Append(shadowAppearance.transform.DOScale(shadowStartSize, duration))
+           .Append(handObject.transform.DOLocalMove(shadowAppearance.transform.position, duration).SetDelay(10))
+
+        //Grab n Drop State
+           .Join(shadowAppearance.transform.DOScale(shadowGrowthSize, duration).OnStepComplete(ItemCollisionCheck))
+           .Append(handObject.transform.DOLocalMove(upDirection, duration).OnStepComplete(RemoveItemFromHand))
+           .Join(shadowAppearance.transform.DOScale(Vector3.zero, duration))
+           .Join(shadowAppearance.DOColor(new Color(0, 0, 0, 0), duration));
     }
 
     public void ItemCollisionCheck()
@@ -64,7 +73,7 @@ public class MagicianHand : MonoBehaviour
 
     private void GoToPosition(Vector3 destionation)
     {
-        shadowAppearance.transform.position = destionation;
+        transform.position = destionation;
     }
 
 }
