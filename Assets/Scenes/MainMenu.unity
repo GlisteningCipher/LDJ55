@@ -1236,8 +1236,20 @@ PrefabInstance:
       value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5906276093249943683, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4989ca1c3796c224a9ac6289985139c3, type: 2}
+    - target: {fileID: 5906276093249943683, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
       propertyPath: m_fontSizeBase
       value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906276093249943683, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1219231871160054099, guid: 4989ca1c3796c224a9ac6289985139c3, type: 2}
+    - target: {fileID: 5906276093249943683, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6625131985739927132, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
       propertyPath: m_IsActive
