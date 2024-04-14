@@ -57,4 +57,12 @@ public class Settings : MonoBehaviour
         _audioMixer.DOSetFloat("LowpassCutoffFreq", 5000, 0.5f);
     }
 
+    public void BUTTON_ResetSettings()
+    {
+        AudioManager.Instance.SfxUiSelect();
+        _masterVolSlider.value = 1;
+        _musicVolSlider.value = 0.5f;
+        _sfxVolSlider.value = 0.5f;
+    }
+
 }
