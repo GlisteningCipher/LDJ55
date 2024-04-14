@@ -1,86 +1,101 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Properties;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 
 public class MagicianHand : MonoBehaviour
 {
     public SpriteRenderer shadowAppearance;
-    public float shadowSize;
-    public float shadowAppearSpeedMultipler;
+    public GameObject handObject;
 
-    public List<Collider2D> ItemInShadow;
+    public Collider2D ItemInShadow;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Hand and Shadow Settings")]
+    public Vector3 farHandOffscreenOffset;
+    public Vector3 shadowGrowthSize;
+    public float appearSpeedMultipler;
+
+    private void Start()
     {
-        
+        StartCoroutine(ShadowHandAppear(1f));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //for debug purposes
-            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            shadowAppearance.transform.position = mouseWorld;
 
-            StartCoroutine(ShadowAppear(10f));
-        }
     }
 
-
-    public IEnumerator ShadowAppear(float duration)
+    public IEnumerator ShadowHandAppear(float duration)
     {
-        ItemInShadow = new List<Collider2D>();
-        shadowAppearance.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            ItemInShadow = null;
+            shadowAppearance.gameObject.GetComponent<Collider2D>().enabled = false;
+            shadowAppearance.color = new Color(0, 0, 0, 0);
+
+            handObject.transform.position = new Vector3(shadowAppearance.transform.position.x, shadowAppearance.transform.position.y + farHandOffscreenOffset.y, shadowAppearance.transform.position.z);
+            handObject.SetActive(true);
 
             float lerptime = 0;
             Color c = shadowAppearance.color;
 
             while (lerptime < duration)
             {
-                c.a = Mathf.Clamp01(lerptime / duration);
-                float s = Mathf.Lerp(0.1f, shadowSize, lerptime / duration);
+                c.a = Mathf.Clamp01(lerptime + appearSpeedMultipler / duration);
+                Vector3 s = Vector3.Lerp(Vector3.zero, shadowGrowthSize, lerptime + appearSpeedMultipler / duration);
+                handObject.transform.position = Vector3.Lerp(handObject.transform.position, shadowAppearance.transform.position, lerptime / duration);
 
-                lerptime += Time.deltaTime / shadowAppearSpeedMultipler;
-
+                lerptime += Time.deltaTime;
                 shadowAppearance.color = c;
-                shadowAppearance.transform.localScale = new Vector3(s, s, s);
-                
+                shadowAppearance.transform.localScale = s;
+
                 yield return null;
-        }
+            }
 
-        shadowAppearance.gameObject.GetComponent<CircleCollider2D>().enabled = true;
         ItemCollisionCheck();
-
-        yield return new WaitForSeconds(duration);
     }
-
     public void ItemCollisionCheck()
     {
-        Collider2D collider = shadowAppearance.gameObject.GetComponent<CircleCollider2D>();
+        handObject.transform.position = transform.position;
+        shadowAppearance.gameObject.GetComponent<Collider2D>().enabled = true;
+
+        Collider2D collider = shadowAppearance.gameObject.GetComponent<Collider2D>();
         ContactFilter2D contactFilter = new ContactFilter2D().NoFilter();
-        List<Collider2D> results = new List<Collider2D> ();
+        List<Collider2D> results = new List<Collider2D>();
 
         if (collider.OverlapCollider(contactFilter, results) > 0)
         {
-            foreach (var item in results)
-            {
-                ItemInShadow.Add(item);
-            }
 
         }
-        else 
+        else
         {
             print("Nothing was overlapped");
-        };
+        }
+
+        StartCoroutine(ShadowHandDissappear(5f));
     }
 
+    public IEnumerator ShadowHandDissappear(float duration)
+    {
+            shadowAppearance.gameObject.GetComponent<Collider2D>().enabled = false;
+            shadowAppearance.transform.localScale = shadowGrowthSize;
 
+            handObject.SetActive(true);
+            handObject.transform.position = shadowAppearance.transform.position;
+
+            float lerptime = 1;
+            Color c = shadowAppearance.color;
+
+            while (lerptime < duration)
+            {
+                c.a = Mathf.Clamp01(lerptime / duration);
+                Vector3 s = Vector3.Lerp(shadowAppearance.transform.localScale, Vector3.zero, lerptime / duration);
+                handObject.transform.position = Vector3.Lerp(handObject.transform.position, shadowAppearance.transform.position + Vector3.up + farHandOffscreenOffset, lerptime / duration);
+
+                lerptime -= Time.deltaTime;
+                shadowAppearance.color = c;
+                shadowAppearance.transform.localScale = s;
+
+                yield return null;
+            }
+    }
 
 }
