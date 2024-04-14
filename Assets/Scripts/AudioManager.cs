@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource _crowdBoo, _crowdApplause,
     _pickUpObject, _dropObject,
     _snare, _cymbal, _handGrab,
-    _magicSpell2,
+    _magicSpell1, _magicSpell2,
     _uiMenuBack, _uiPause, _uiSelect, _uiStartGame;
 
     public static AudioManager Instance;
@@ -61,7 +61,19 @@ public class AudioManager : MonoBehaviour
     public void SfxCymbal() => _cymbal.Play();
     public void SfxHandGrab() => _handGrab.Play();
 
+    public void SfxMagicSpell1() => _magicSpell1.Play();
     public void SfxMagicSpell2() => _magicSpell2.Play();
+    public void SfxRandomMagicSpell()
+    {
+        if (Random.Range(0, 2) == 1)
+        {
+            SfxMagicSpell1();
+        }
+        else
+        {
+            SfxMagicSpell2();
+        }
+    }
 
     public void SfxUiMenuBack() => _uiMenuBack.Play();
     public void SfxUiPause() => _uiPause.Play();
