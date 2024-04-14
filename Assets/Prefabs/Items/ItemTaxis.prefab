@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
       propertyPath: m_Name
-      value: ItemWander
+      value: ItemTaxis
       objectReference: {fileID: 0}
     - target: {fileID: 6896281030857228736, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,14 +58,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 689258399835987373}
+      addedObject: {fileID: 1153730319190962806}
   m_SourcePrefab: {fileID: 100100000, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
 --- !u!1 &3971962558333372262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
   m_PrefabInstance: {fileID: 8222905370198178832}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &689258399835987373
+--- !u!114 &1153730319190962806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,12 +74,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3971962558333372262}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15f2c851df71ea4285ce56df1ecfa50, type: 3}
+  m_Script: {fileID: 11500000, guid: 131d18c7324b75a45887d4bcad9e7924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.02
-  NoiseScale: 1
-  RotationScale: 10
+  target: {fileID: 0}
+  targetPlayer: 0
+  lerpSpeed: 0.1
+  maxSpeed: 0
+  detectionRadius: 5
+  avoidTarget: 0
   bounds:
     m_Center: {x: -2.5, y: -0.25, z: 0}
     m_Extent: {x: 5, y: 3.75, z: 0}
