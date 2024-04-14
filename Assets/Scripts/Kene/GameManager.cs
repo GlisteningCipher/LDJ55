@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using static UnityEditor.PlayerSettings;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +10,9 @@ public class GameManager : MonoBehaviour
     public int points;
 
     public MagicianHand magicHand;
-    [SerializeField] bool _handAppeared;
 
-    //public float timeValue = 90;
-    //public bool timerRunning = true;
+    public float timeValue = 90;
+    public bool timerRunning = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,22 +25,17 @@ public class GameManager : MonoBehaviour
      // Update is called once per frame
     void Update()
     {
-        //if (timeValue > 0)
-        //{
-        //    timeValue -= Time.deltaTime;
-        //}
-        //else
-        //{
-        //    timeValue = 0;
-        //    _handAppeared = true;
-        //    timerRunning = false;
-        //}
-
-        if (_handAppeared == true)
+        if (timeValue > 0)
         {
-            
-            _handAppeared = false;
+            timeValue -= Time.deltaTime;
         }
+        else
+        {
+            timeValue = 10;
+            timerRunning = false;
+            magicHand.HandAppear();
+        }
+
     }
 
     public void UpdatePoints(int increment)

@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 132961555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1177,8 +1177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowAppearance: {fileID: 2136912169}
   handObject: {fileID: 132961555}
-  ItemInShadow: {fileID: 0}
-  farHandOffscreenOffset: {x: 0, y: 5, z: 0}
+  itemGrabbed: {fileID: 0}
+  farHandOffscreenOffset: {x: 0, y: 10, z: 0}
   shadowGrowthSize: {x: 1, y: 0.5, z: 1}
   duration: 1
 --- !u!4 &1901606115
@@ -1228,7 +1228,8 @@ MonoBehaviour:
   audienceMeter: {fileID: 541547672}
   points: 0
   magicHand: {fileID: 1901606114}
-  _handAppeared: 0
+  timeValue: 5
+  timerRunning: 1
 --- !u!4 &2013807947
 Transform:
   m_ObjectHideFlags: 0
