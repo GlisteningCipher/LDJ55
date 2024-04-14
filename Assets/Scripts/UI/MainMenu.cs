@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,6 +43,7 @@ public class MainMenu : MonoBehaviour
             return;
 
         AudioManager.Instance.SfxUiPause();
+        Settings.Instance.MuffleMusic();
 
         _pauseContainer.SetActive(true);
         _pauseContainer.transform.DOKill();
@@ -54,6 +56,7 @@ public class MainMenu : MonoBehaviour
     public void BUTTON_ResumeClosePauseMenu()
     {
         AudioManager.Instance.SfxUiMenuBack();
+        Settings.Instance.UnMuffleMusic();
 
         _pauseContainer.transform.DOKill();
         _pauseContainer.transform.DOScale(0, _uiPanelCloseTime).OnComplete(() =>
@@ -77,6 +80,9 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_MainMenuOpen()
     {
+        AudioManager.Instance.SfxUiMenuBack();
+        Settings.Instance.UnMuffleMusic();
+
         _mainMenuContainer.SetActive(true);
         _pauseContainer.transform.DOKill();
         _pauseContainer.transform.DOScale(0, _uiPanelCloseTime).OnComplete(() => _pauseContainer.SetActive(false));
