@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7678c951a19110141b44b9a889bc1a34, type: 3}
   m_Name: Spell1Static2
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 8309424091001049507, guid: 0c69a29e26c22b34991304431a9bd6e0, type: 3}
-  - {fileID: 7306945056317922985, guid: 0d4915386c66c7f4fbfeb01e6128d472, type: 3}
-  amounts: 0400000001000000
+  item: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
+  amount: 5
+  timeToShadow: 5
+  timeToGrab: 10

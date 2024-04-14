@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7678c951a19110141b44b9a889bc1a34, type: 3}
   m_Name: Spell2Avoid3
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 1746696270959365878, guid: 231befd4c09d4d241a07da8a6673f8b7, type: 3}
-  amounts: 05000000
+  item: {fileID: 3971962558333372262, guid: 231befd4c09d4d241a07da8a6673f8b7, type: 3}
+  amount: 5
+  timeToShadow: 5
+  timeToGrab: 10
