@@ -282,3 +282,6 @@ MonoBehaviour:
   dropTransform: {fileID: 3194891717312360576}
   lerpSpeed: 0.01
   lerpOffset: {x: 0, y: 0.35}
+  playerBounds:
+    m_Center: {x: -2.5, y: -0.5, z: 0}
+    m_Extent: {x: 5, y: 4, z: 0}

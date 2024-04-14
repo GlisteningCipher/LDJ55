@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestWave: {fileID: 11400000, guid: 5b2194007497ff94f9b82b055d61ffd9, type: 2}
-  bounds: {x: 14, y: 6}
-  granularity: {x: 21, y: 9}
+  bounds: {x: 10.5, y: 8}
+  granularity: {x: 15, y: 12}

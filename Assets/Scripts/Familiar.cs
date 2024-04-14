@@ -9,6 +9,7 @@ public class Familiar : MonoBehaviour
 
     [SerializeField] float lerpSpeed = 0.01f;
     [SerializeField] Vector2 lerpOffset = default;
+    [SerializeField] Bounds playerBounds;
 
     private Camera mainCamera;
 
@@ -19,10 +20,17 @@ public class Familiar : MonoBehaviour
         mainCamera = Camera.main;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(playerBounds.center, playerBounds.extents * 2f);
+    }
+
     void Update()
     {
         Vector2 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = Vector2.Lerp(transform.position, mouseWorld + lerpOffset, lerpSpeed);
+        Vector2 destination = playerBounds.ClosestPoint(mouseWorld);
+        transform.position = Vector2.Lerp(transform.position, destination + lerpOffset, lerpSpeed);
     }
 
 }

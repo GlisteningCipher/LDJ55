@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         timerRunning = true;
     }
 
-    // Update is called once per frame
+     // Update is called once per frame
     void Update()
     {
         if (timeValue > 0 && timerRunning == true)
