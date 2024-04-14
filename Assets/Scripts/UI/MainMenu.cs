@@ -22,16 +22,19 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_StartGame()
     {
-        if (_mainMenuContainer)
-            _mainMenuContainer.SetActive(false);
-
+        _mainMenuContainer.SetActive(false);
         // todo Game Manager / Scene loader Show Level 1
+    }
+
+    public void BUTTON_MainMenuOpen()
+    {
+        _mainMenuContainer.SetActive(true);
+        // todo game logic because we are leaving from the gameplay view
     }
 
     public void BUTTON_SettingsOpen()
     {
         // todo Stop game speed in case started from game view
-
         _dimmerPanel.SetActive(true);
         _settingsContainer.SetActive(true);
     }
@@ -39,7 +42,6 @@ public class MainMenu : MonoBehaviour
     public void BUTTON_SettingsClose()
     {
         // todo Start game speed in case started from game view
-
         _dimmerPanel.SetActive(false);
         _settingsContainer.SetActive(false);
     }
