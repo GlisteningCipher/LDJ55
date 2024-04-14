@@ -17,25 +17,19 @@ public class Item : MonoBehaviour
 
     private Transform initialParent;
     private Tween carryTween;
-
-    private static int globalSpawnIndex;
-    private int spawnIndex;
-    private float zFightingStep = -0.001f;
-
-    void RepositionZ() => transform.position += (Vector3.forward * spawnIndex * zFightingStep);
+    private Transform t;
 
     private void Awake()
     {
-        globalSpawnIndex++;
-        spawnIndex = globalSpawnIndex;
+        t = transform;
         initialParent = transform.parent;
     }
 
     private void Start()
     {
         transform.DOMoveY(transform.position.y, 1f).From(transform.position.y + 10).SetEase(Ease.OutCubic).SetDelay(Random.Range(0, maxSpawnDelay))
-            .OnComplete(() => {
-                RepositionZ();
+            .OnComplete(() =>
+            {
                 OnDrop.Invoke();
             });
     }
@@ -45,7 +39,7 @@ public class Item : MonoBehaviour
         var playerScript = Familiar.Instance;
         if (carryTween.IsActive()) carryTween.Complete();
         transform.SetParent(playerScript.transform);
-        carryTween = transform.DOLocalMove(playerScript.carryTransform.localPosition, tweenDuration).OnComplete(() => RepositionZ());
+        carryTween = transform.DOLocalMove(playerScript.carryTransform.localPosition, tweenDuration);
         OnCarry.Invoke();
     }
 
@@ -53,10 +47,18 @@ public class Item : MonoBehaviour
     {
         if (carryTween.IsActive()) carryTween.Complete();
         carryTween = transform.DOLocalMove(Familiar.Instance.dropTransform.localPosition, tweenDuration)
-            .OnComplete(() => {
-                transform.SetParent(initialParent); RepositionZ();
+            .OnComplete(() =>
+            {
+                transform.SetParent(initialParent);
                 OnDrop.Invoke();
             });
+    }
+
+    void FixedUpdate()
+    {
+        // For pseudo 3d effect
+        // todo perf: do only if moving
+        t.position = new Vector3(t.position.x, t.position.y, 10 + t.position.y);
     }
 
 }

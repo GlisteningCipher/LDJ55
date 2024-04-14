@@ -50,15 +50,12 @@ public class ItemSpawner : MonoBehaviour
     public void RunTestWave()
     {
         ClearWave();
-        SpawnWave(TestWave.items, TestWave.amounts);
+        SpawnWave(TestWave.item, TestWave.amount);
     }
 
-    public void SpawnWave(Item[] items, int[] amounts)
+    public void SpawnWave(Item item, int amount)
     {
-        for (int i = 0; i < Mathf.Min(items.Length, amounts.Length); i++)
-        {
-            Spawn(items[i], amounts[i]);
-        }
+        Spawn(item, amount);
     }
 
     public void Spawn(Item prefab, int amount = 1)
