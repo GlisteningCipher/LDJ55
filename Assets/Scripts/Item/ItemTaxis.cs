@@ -1,4 +1,4 @@
-//using System.Collections;
+using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ public class ItemTaxis : MonoBehaviour
     [SerializeField] float maxSpeed = 0f;
     [SerializeField] float detectionRadius = 5f;
     [SerializeField] bool avoidTarget = false;
+    public float stunDuration = 1f;
     [SerializeField] Bounds bounds;
 
     private void Awake()
@@ -17,6 +18,13 @@ public class ItemTaxis : MonoBehaviour
         var item = GetComponent<Item>();
         item.OnCarry.AddListener(() => enabled = false);
         item.OnDrop.AddListener(() => enabled = true);
+        item.OnDrop.AddListener(() => StartCoroutine(EnableAfterDrop()));
+    }
+
+    private IEnumerator EnableAfterDrop()
+    {
+        yield return new WaitForSeconds(stunDuration);
+        enabled = true;
     }
 
     private void Start()

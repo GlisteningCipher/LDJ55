@@ -1,4 +1,4 @@
-//using System.Collections;
+using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +7,7 @@ public class ItemWander : MonoBehaviour
     public float Speed = 0f;
     public float NoiseScale = 1f;
     public float RotationScale = 1f;
+    public float stunDuration = 1f;
     public Bounds bounds;
 
     private Vector2 Direction;
@@ -16,7 +17,13 @@ public class ItemWander : MonoBehaviour
         Direction = Random.insideUnitCircle.normalized;
         var item = GetComponent<Item>();
         item.OnCarry.AddListener(() => enabled = false);
-        item.OnDrop.AddListener(() => enabled = true);
+        item.OnDrop.AddListener(() => StartCoroutine(EnableAfterDrop()));
+    }
+
+    private IEnumerator EnableAfterDrop()
+    {
+        yield return new WaitForSeconds(stunDuration);
+        enabled = true;
     }
 
     private void FixedUpdate()

@@ -56,7 +56,7 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnWave(GameObject itemPrefab, int amount, Sprite goodItemSprite, Sprite[] badItemSprites)
     {
-        Spawn(itemPrefab, amount, goodItemSprite); //spawn one good item
+        Spawn(itemPrefab, 1, goodItemSprite); //spawn one good item
         amount -= 1;
         for (int i = 0; i < badItemSprites.Length; i++)
         {
