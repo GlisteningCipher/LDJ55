@@ -9,12 +9,13 @@ using TMPro;
 public class TweenButtonFeedback : MonoBehaviour
 {
     [SerializeField] private float _animationSpeed = 0.5f;
+    [SerializeField] private Color _activeColor = Color.green;
 
     public void EVENT_OnPointerEnter()
     {
         transform.DOKill();
         transform.DOScale(Vector3.one * 1.1f, _animationSpeed);
-        transform.GetComponentInChildren<TMP_Text>().DOColor(Color.red, _animationSpeed);
+        transform.GetComponentInChildren<TMP_Text>().DOColor(_activeColor, _animationSpeed);
         // problems with killing sequence that is not saved
         // Sequence sequence = DOTween.Sequence();
         // sequence
@@ -31,7 +32,7 @@ public class TweenButtonFeedback : MonoBehaviour
     {
         transform.DOKill();
         transform.DOScale(Vector3.one, _animationSpeed);
-        transform.GetComponentInChildren<TMP_Text>().DOColor(Color.black, _animationSpeed);
+        transform.GetComponentInChildren<TMP_Text>().DOColor(Color.white, _animationSpeed);
     }
 
     /// <summary> Panel closes so fast that this animation is worthless.</summary>
