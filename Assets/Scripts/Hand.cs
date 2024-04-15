@@ -41,7 +41,8 @@ public class Hand : MonoBehaviour
         grabSequence = DOTween.Sequence()
             .AppendCallback(SequenceInit)
             .Append(GoToPosition(new Vector3(xRan, yRan))).AppendInterval(timeToShadow)
-            .Append(RevealShadow()).AppendInterval(timeToGrab)
+            .Append(RevealShadow()).AppendInterval(timeToGrab - 1f)
+            .AppendCallback(()=>AudioManager.Instance.SfxHandIncoming()).AppendInterval(1f)
             .Append(LowerHand())
             .Join(MaximizeShadow()).AppendInterval(SMALL_WAIT_DURATION)
             .AppendCallback(GrabItem).AppendInterval(SMALL_WAIT_DURATION)
@@ -93,6 +94,7 @@ public class Hand : MonoBehaviour
 
         if (grabArea.OverlapCollider(contactFilter, overlappingColliders) > 0)
         {
+            AudioManager.Instance.SfxHandGrab();
             float minDistance = Mathf.Infinity;
             Collider2D closestCollider = null;
             foreach (var col in overlappingColliders)

@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
             currentSpell += 1;
             currentRecipe = GetNewRecipe();
             playerHUD.SetSpellRecipe(currentRecipe);
+            AudioManager.Instance.SfxMagicSpell1();
         }
 
         //exit game loop if all spells finished
