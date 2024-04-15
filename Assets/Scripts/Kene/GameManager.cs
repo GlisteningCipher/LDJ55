@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     public void GoodOutcome()
     {
         //only increase on final wave success
-        if (currentWave == wavesPerSpell)
+        if (currentWave == wavesPerSpell - 1)
         {
             healthCount = Mathf.Min(healthCount + 1, maxHealth);
             onHealthChange.Invoke(healthCount);

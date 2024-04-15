@@ -35,6 +35,14 @@ public class Item : MonoBehaviour
             });
     }
 
+    public void Kill()
+    {
+        const float killTime = 0.2f;
+        spriteRenderer.DOFade(0f, killTime);
+        transform.DOMoveY(transform.position.y - 1f, killTime)
+            .OnComplete(() => Destroy(gameObject));
+    }
+
     private void OnDestroy()
     {
         if (spawnTween.IsActive()) spawnTween.Kill();

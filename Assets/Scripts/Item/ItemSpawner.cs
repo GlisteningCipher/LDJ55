@@ -43,10 +43,7 @@ public class ItemSpawner : MonoBehaviour
     public void ClearWave()
     {
         ResetSpawnRecord();
-        foreach (var spawn in spawnedItems)
-        {
-            Destroy(spawn.gameObject);
-        }
+        foreach (var spawn in spawnedItems) spawn.Kill();
         spawnedItems.Clear();
     }
 
