@@ -861,6 +861,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1403358542 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7079788642410333499, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
+  m_PrefabInstance: {fileID: 7880236431830464051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1403358543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1003603563643754436, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
+  m_PrefabInstance: {fileID: 7880236431830464051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482557132 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6625131985739927132, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
@@ -953,6 +969,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1906939043}
     m_Modifications:
+    - target: {fileID: 2060872995111792506, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 1403358542}
+    - target: {fileID: 2060872995111792506, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: cursorI
+      value: 
+      objectReference: {fileID: 1403358543}
+    - target: {fileID: 2060872995111792506, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: mouseOn
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c5b91509ee072d489cc1c646fc8d069, type: 3}
+    - target: {fileID: 2060872995111792506, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: mouseOff
+      value: 
+      objectReference: {fileID: 21300000, guid: f8d1fe442a2247345bc19e11706c01bd, type: 3}
     - target: {fileID: 3764957612787992409, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: _dimmerPanel
       value: 

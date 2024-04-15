@@ -240,6 +240,56 @@ MonoBehaviour:
   _gameEndWinContainer: {fileID: 0}
   _loseScore: {fileID: 0}
   _winScore: {fileID: 0}
+  _loadingScreenContainer: {fileID: 0}
+  _loadingText: {fileID: 0}
+--- !u!1 &3548814083115992341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2909710582728162287}
+  - component: {fileID: 2060872995111792506}
+  m_Layer: 0
+  m_Name: Custom Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2909710582728162287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548814083115992341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9182875003711784464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060872995111792506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548814083115992341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7a4bb69482bc1499890917344ffa9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 0}
+  cursorI: {fileID: 0}
+  mouseOn: {fileID: 0}
+  mouseOff: {fileID: 0}
 --- !u!1 &8695624588955072557
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +325,7 @@ Transform:
   - {fileID: 1668080976690944439}
   - {fileID: 4902160281517414542}
   - {fileID: 2130044623951637920}
+  - {fileID: 2909710582728162287}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &484432672178492514
