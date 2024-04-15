@@ -58,7 +58,9 @@ public class Settings : MonoBehaviour
 
     public void BUTTON_ResetSettings()
     {
-        AudioManager.Instance.SfxUiSelect();
+        // AudioManager.Instance.SfxUiSelect();
+        AudioManager.Instance.SfxPaperPressButton();
+
         _masterVolSlider.value = 1;
         _musicVolSlider.value = 0.5f;
         _sfxVolSlider.value = 0.5f;

@@ -55,7 +55,9 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_ResumeClosePauseMenu()
     {
-        AudioManager.Instance.SfxUiMenuBack();
+        // AudioManager.Instance.SfxUiMenuBack();
+        AudioManager.Instance.SfxPaperGoBack();
+
         Settings.Instance.UnMuffleMusic();
 
         _pauseContainer.transform.DOKill();
@@ -81,7 +83,9 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_MainMenuOpen()
     {
-        AudioManager.Instance.SfxUiMenuBack();
+        // AudioManager.Instance.SfxUiMenuBack();
+        AudioManager.Instance.SfxPaperGoBack();
+
         Settings.Instance.UnMuffleMusic();
 
         _mainMenuContainer.SetActive(true);
@@ -97,7 +101,8 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_SettingsOpen()
     {
-        AudioManager.Instance.SfxUiSelect();
+        // AudioManager.Instance.SfxUiSelect();
+        AudioManager.Instance.SfxPaperPressButton();
 
         // todo Stop game speed in case started from game view
         _settingsContainer.SetActive(true);
@@ -117,7 +122,8 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_SettingsClose()
     {
-        AudioManager.Instance.SfxUiMenuBack();
+        // AudioManager.Instance.SfxUiMenuBack();
+        AudioManager.Instance.SfxPaperGoBack();
 
         _settingsContainer.transform.DOScale(0, _uiPanelCloseTime).OnComplete(() =>
         {
@@ -154,12 +160,14 @@ public class MainMenu : MonoBehaviour
             _dimmerPanelBlockingPause.SetActive(false);
         }
 
-        AudioManager.Instance.SfxUiSelect();
+        // AudioManager.Instance.SfxUiSelect();
+        AudioManager.Instance.SfxPaperPressButton();
     }
 
     public void BUTTON_CreditsClose()
     {
-        AudioManager.Instance.SfxUiMenuBack();
+        // AudioManager.Instance.SfxUiMenuBack();
+        AudioManager.Instance.SfxPaperGoBack();
 
         _creditsContainer.transform.DOScale(0, _uiPanelCloseTime).OnComplete(() =>
         {
@@ -182,7 +190,10 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_QuitGame()
     {
-        AudioManager.Instance.SfxUiMenuBack();
+        // AudioManager.Instance.SfxUiMenuBack();
+        // AudioManager.Instance.SfxPaperGoBack();
+        AudioManager.Instance.SfxPaperPressButton();
+
         foreach (var item in GameObject.FindObjectsOfType<Button>())
         {
             item.transform.DOScale(0, 0.4f);

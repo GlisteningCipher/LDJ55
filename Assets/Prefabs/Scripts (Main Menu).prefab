@@ -189,8 +189,8 @@ MonoBehaviour:
   _dimmerPanelBlockingPause: {fileID: 0}
   _creditsContainer: {fileID: 0}
   _pauseContainer: {fileID: 0}
-  _uiPanelOpenTime: 0.5
-  _uiPanelCloseTime: 0.3
+  _uiPanelOpenTime: 0.7
+  _uiPanelCloseTime: 0.35
   State: 1
 --- !u!1 &3096963667948797705
 GameObject:
