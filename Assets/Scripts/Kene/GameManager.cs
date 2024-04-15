@@ -54,24 +54,21 @@ public class GameManager : MonoBehaviour
         currentSpell = 0;
         currentWave = 0;
         healthCount = startingHealth;
+        currentRecipe = GetNewRecipe();
+        playerHUD.SetSpellRecipe(currentRecipe);
         StartNewWave();
     }
 
     private void StartNewWave()
     {
 
-        //create new recipe at start of each spell
-        if (currentWave == 0)
-        {
-            currentRecipe = GetNewRecipe();
-            playerHUD.SetSpellRecipe(currentRecipe);
-        }
-
         //go to next spell if finished all waves
         if (currentWave == allSpells[0].waves.Length)
         {
             currentWave = 0;
             currentSpell += 1;
+            currentRecipe = GetNewRecipe();
+            playerHUD.SetSpellRecipe(currentRecipe);
         }
 
         //exit game loop if all spells finished

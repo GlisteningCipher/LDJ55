@@ -45,5 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestWave: {fileID: 11400000, guid: 5b2194007497ff94f9b82b055d61ffd9, type: 2}
+  itemSprites:
+  - {fileID: 21300000, guid: f065f0e77bbfde2438935fb7be6726e1, type: 3}
+  - {fileID: 21300000, guid: a7c2e5b903e1cfe439281881bc5aaf31, type: 3}
+  - {fileID: 21300000, guid: 2528f68df75f53c489f21cbfc06de38c, type: 3}
+  - {fileID: 21300000, guid: d850bf68002148d4fbbc842332ad854c, type: 3}
+  - {fileID: 21300000, guid: 6a80629d2c23165488f37f6374b4dc40, type: 3}
+  runOnStart: 1
   bounds: {x: 10.5, y: 8}
   granularity: {x: 15, y: 12}

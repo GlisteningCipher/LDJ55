@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffed69bd0788c7643aa7a453606ffdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthCount: 0
-  spellCount: 0
-  waveCount: 0
+  playerHUD: {fileID: 0}
+  magicianHand: {fileID: 0}
+  spawner: {fileID: 0}
   allSpells:
   - {fileID: 11400000, guid: dfaf388ec583e794cb5ad740b6428d3f, type: 2}
   - {fileID: 11400000, guid: 2c0d5a71a1e83484293f65e97c3ea38b, type: 2}
@@ -54,32 +54,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f0490d63631925943b5402a16514a47f, type: 2}
   - {fileID: 11400000, guid: b88fe1c2b987260469d1eaef9b65644c, type: 2}
   - {fileID: 11400000, guid: 958c0c6bfe5f62249bbae5236264569e, type: 2}
+  allItemSprites:
+  - {fileID: 21300000, guid: f065f0e77bbfde2438935fb7be6726e1, type: 3}
+  - {fileID: 21300000, guid: a7c2e5b903e1cfe439281881bc5aaf31, type: 3}
+  - {fileID: 21300000, guid: 2528f68df75f53c489f21cbfc06de38c, type: 3}
+  - {fileID: 21300000, guid: d850bf68002148d4fbbc842332ad854c, type: 3}
+  - {fileID: 21300000, guid: 6a80629d2c23165488f37f6374b4dc40, type: 3}
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
-  magicHand: {fileID: 0}
-  spawner: {fileID: 0}
-  spells:
-  - {fileID: 11400000, guid: dfaf388ec583e794cb5ad740b6428d3f, type: 2}
-  - {fileID: 11400000, guid: 2c0d5a71a1e83484293f65e97c3ea38b, type: 2}
-  - {fileID: 11400000, guid: c1c10ccf044b9b54b8819fea5af9e7f7, type: 2}
-  - {fileID: 11400000, guid: f0490d63631925943b5402a16514a47f, type: 2}
-  - {fileID: 11400000, guid: b88fe1c2b987260469d1eaef9b65644c, type: 2}
-  - {fileID: 11400000, guid: 958c0c6bfe5f62249bbae5236264569e, type: 2}
-  item: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
-  goodItemIcon: {fileID: 21300000, guid: 5fe7d342d66115245bf0cf355fbd8233, type: 3}
-  badItemIcons:
-  - {fileID: 21300000, guid: bd219f4ac73220941bd40c3027d115ad, type: 3}
-  - {fileID: 21300000, guid: 9a937952e45803e4d8e241374b3adb06, type: 3}
-  - {fileID: 21300000, guid: 841d87bc26b16c948b9114fd3f73216b, type: 3}
-  - {fileID: 21300000, guid: b3a6534b585c68146bbe866dac410362, type: 3}
   OnWin:
     m_PersistentCalls:
       m_Calls: []
   OnLose:
     m_PersistentCalls:
       m_Calls: []
-  minWidthFloor: -7.5
-  maxWidthFloor: 2.5
-  minHeightFloor: -4
-  maxHeightFloor: 3.5
+  GoodPick:
+    m_PersistentCalls:
+      m_Calls: []
+  BadPick:
+    m_PersistentCalls:
+      m_Calls: []
