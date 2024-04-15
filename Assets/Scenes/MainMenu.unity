@@ -531,6 +531,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8574126741748220893, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
   m_PrefabInstance: {fileID: 7880236431830464051}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &741135098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8580047845021093192, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
+  m_PrefabInstance: {fileID: 7880236431830464051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &792974905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -861,6 +866,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6625131985739927132, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
   m_PrefabInstance: {fileID: 6453590411662091388}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1544239642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7594133059004216490, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
+  m_PrefabInstance: {fileID: 7880236431830464051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1563974746 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6344648809396663398, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
@@ -986,6 +1002,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7880236431830464053}
     - target: {fileID: 6654902128192766476, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: _loadingText
+      value: 
+      objectReference: {fileID: 1544239642}
+    - target: {fileID: 6654902128192766476, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: _gameEndWinContainer
       value: 
       objectReference: {fileID: 7880236431830464056}
@@ -993,9 +1013,17 @@ PrefabInstance:
       propertyPath: _gameEndLoseContainer
       value: 
       objectReference: {fileID: 7880236431830464054}
+    - target: {fileID: 6654902128192766476, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: _loadingScreenContainer
+      value: 
+      objectReference: {fileID: 741135098}
     - target: {fileID: 8695624588955072557, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: m_Name
       value: Scripts (Main Menu)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8727479058827792625, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
+      propertyPath: _loadGameplaySceneAtStart
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182875003711784464, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2110,6 +2138,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8574126741748220893, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8580047845021093192, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

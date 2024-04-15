@@ -6,8 +6,20 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _gameEndLoseContainer, _gameEndWinContainer;
+    [Header("Game Ending Panels")]
+    [SerializeField] private GameObject _gameEndLoseContainer;
+    [SerializeField] private GameObject _gameEndWinContainer;
     [SerializeField] private TMP_Text _loseScore, _winScore;
+    [Header("Loading Screen")]
+    [SerializeField] private GameObject _loadingScreenContainer;
+    [SerializeField] private TMP_Text _loadingText;
+
+    public static UIManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -39,5 +51,15 @@ public class UIManager : MonoBehaviour
     {
         _gameEndLoseContainer.transform.DOScale(0, 0.3f).OnComplete(() => _gameEndLoseContainer.SetActive(false));
         _gameEndWinContainer.transform.DOScale(0, 0.3f).OnComplete(() => _gameEndWinContainer.SetActive(false));
+    }
+
+    public void ShowLoadingScreen()
+    {
+        _loadingScreenContainer.SetActive(true);
+    }
+
+    public void HideLoadingScreen()
+    {
+        _loadingScreenContainer.SetActive(false);
     }
 }

@@ -7,7 +7,14 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private bool _loadGameplaySceneAtStart;
     [SerializeField] private string _gameplaySceneName = "Game";
 
-    void Start()
+    public static SceneLoader Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
     {
         if (_loadGameplaySceneAtStart)
         {
@@ -21,14 +28,18 @@ public class SceneLoader : MonoBehaviour
         
         IEnumerator LoadGamePlayScene()
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_gameplaySceneName);
+            // var minLoadingTimeInMs = 2000;
             var timer = new System.Diagnostics.Stopwatch();
             timer.Start();
 
-            while (!asyncLoad.isDone)
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_gameplaySceneName);
+
+            UIManager.Instance.ShowLoadingScreen();
+            while (!asyncLoad.isDone) //|| timer.ElapsedMilliseconds < minLoadingTimeInMs)
             {
                 yield return null;
             }
+            UIManager.Instance.HideLoadingScreen();
 
             timer.Stop();
             print("done loading level, it took " + timer.ElapsedMilliseconds / 1000f + " seconds");

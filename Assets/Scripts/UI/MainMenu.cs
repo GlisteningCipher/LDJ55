@@ -73,9 +73,9 @@ public class MainMenu : MonoBehaviour
         DOVirtual.DelayedCall(0.5f, () =>
         {
             _mainMenuContainer.SetActive(false);
-            // todo Game Manager / Scene loader Show Level 1
+            SceneLoader.Instance.LoadGameScene();
             AudioManager.Instance.MusicGameplayPlay();
-            DOVirtual.DelayedCall(2f, () => GameManager.Instance.StartGame());
+            // DOVirtual.DelayedCall(2f, () => GameManager.Instance.StartGame());
         });
     }
 
