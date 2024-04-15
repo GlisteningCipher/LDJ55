@@ -13,12 +13,13 @@ public class ItemTaxis : MonoBehaviour
     public float stunDuration = 1f;
     [SerializeField] Bounds bounds;
 
+    private Coroutine stunRoutine;
+
     private void Awake()
     {
         var item = GetComponent<Item>();
-        item.OnCarry.AddListener(() => enabled = false);
-        item.OnDrop.AddListener(() => enabled = true);
-        item.OnDrop.AddListener(() => StartCoroutine(EnableAfterDrop()));
+        item.OnCarry.AddListener(() => { StopCoroutine(stunRoutine); enabled = false; });
+        item.OnDrop.AddListener(() => stunRoutine = StartCoroutine(EnableAfterDrop()));
     }
 
     private IEnumerator EnableAfterDrop()

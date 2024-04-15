@@ -11,13 +11,14 @@ public class ItemWander : MonoBehaviour
     public Bounds bounds;
 
     private Vector2 Direction;
+    private Coroutine stunRoutine;
 
     private void Awake()
     {
         Direction = Random.insideUnitCircle.normalized;
         var item = GetComponent<Item>();
-        item.OnCarry.AddListener(() => enabled = false);
-        item.OnDrop.AddListener(() => StartCoroutine(EnableAfterDrop()));
+        item.OnCarry.AddListener(() => { StopCoroutine(stunRoutine); enabled = false; });
+        item.OnDrop.AddListener(() => stunRoutine = StartCoroutine(EnableAfterDrop()));
     }
 
     private IEnumerator EnableAfterDrop()
