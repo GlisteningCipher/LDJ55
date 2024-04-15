@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
       propertyPath: m_Name
-      value: ItemTaxis
+      value: ItemAvoid
       objectReference: {fileID: 0}
     - target: {fileID: 6896281030857228736, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,6 +83,7 @@ MonoBehaviour:
   maxSpeed: 0.15
   detectionRadius: 3
   avoidTarget: 1
+  stunDuration: 2
   bounds:
     m_Center: {x: -2.5, y: -0.25, z: 0}
     m_Extent: {x: 4.5, y: 3.25, z: 0}

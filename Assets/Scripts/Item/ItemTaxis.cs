@@ -18,7 +18,7 @@ public class ItemTaxis : MonoBehaviour
     private void Awake()
     {
         var item = GetComponent<Item>();
-        item.OnCarry.AddListener(() => { StopCoroutine(stunRoutine); enabled = false; });
+        item.OnCarry.AddListener(() => { if (stunRoutine != null) StopCoroutine(stunRoutine); enabled = false; });
         item.OnDrop.AddListener(() => stunRoutine = StartCoroutine(EnableAfterDrop()));
     }
 
