@@ -27,8 +27,15 @@ public class UIManager : MonoBehaviour
         _gameEndWinContainer.SetActive(false);
     }
 
+    [ContextMenu("Victory")]
+    public void TestWin()
+    {
+        WinGame("5");
+    }
+
     public void WinGame(string score)
     {
+        AudioManager.Instance.SfxVictory();
         _gameEndWinContainer.SetActive(true);
         _gameEndWinContainer.transform.DOScale(1, 0.5f).From(0);
         if (_winScore)
@@ -39,6 +46,7 @@ public class UIManager : MonoBehaviour
 
     public void LoseGame(string score)
     {
+        AudioManager.Instance.SfxFailure();
         _gameEndLoseContainer.SetActive(true);
         _gameEndLoseContainer.transform.DOScale(1, 0.5f).From(0);
         if (_loseScore)

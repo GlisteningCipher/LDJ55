@@ -14,9 +14,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770321785574216729, guid: 5fe7e47aa5f67e14ab93b88be6c520fd, type: 3}
       propertyPath: m_text
-      value: 'You !passed the summoning exam,
+      value: 'You didn''t pass the summoning exam,
 
-        !great job!'
+        better luck next time!'
       objectReference: {fileID: 0}
     - target: {fileID: 2459866571458508665, guid: 5fe7e47aa5f67e14ab93b88be6c520fd, type: 3}
       propertyPath: m_Pivot.x
@@ -100,7 +100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3215050358297899798, guid: 5fe7e47aa5f67e14ab93b88be6c520fd, type: 3}
       propertyPath: m_text
-      value: '!Success'
+      value: Failure!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -17,7 +17,7 @@ public class ItemWander : MonoBehaviour
     {
         Direction = Random.insideUnitCircle.normalized;
         var item = GetComponent<Item>();
-        item.OnCarry.AddListener(() => { StopCoroutine(stunRoutine); enabled = false; });
+        item.OnCarry.AddListener(() => { if (stunRoutine != null) StopCoroutine(stunRoutine); enabled = false; });
         item.OnDrop.AddListener(() => stunRoutine = StartCoroutine(EnableAfterDrop()));
     }
 
