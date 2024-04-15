@@ -980,11 +980,11 @@ PrefabInstance:
     - target: {fileID: 2060872995111792506, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: mouseOn
       value: 
-      objectReference: {fileID: 21300000, guid: 2c5b91509ee072d489cc1c646fc8d069, type: 3}
+      objectReference: {fileID: 21300000, guid: 28462038becb38c46b2259a4e6b57b06, type: 3}
     - target: {fileID: 2060872995111792506, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: mouseOff
       value: 
-      objectReference: {fileID: 21300000, guid: f8d1fe442a2247345bc19e11706c01bd, type: 3}
+      objectReference: {fileID: 21300000, guid: 4d5852f8ca873fc4a96933ce30681a9e, type: 3}
     - target: {fileID: 3764957612787992409, guid: 7c89b48c05d4f9442ad98c3fdee1a95a, type: 3}
       propertyPath: _dimmerPanel
       value: 
@@ -1605,6 +1605,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 1003603563643754436, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d5852f8ca873fc4a96933ce30681a9e, type: 3}
     - target: {fileID: 1084148769378216789, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
