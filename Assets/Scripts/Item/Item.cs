@@ -57,6 +57,7 @@ public class Item : MonoBehaviour
         carryTween = transform.DOLocalMove(playerScript.carryTransform.localPosition, tweenDuration);
         OnCarry.Invoke();
         spriteRenderer.sortingOrder = 1;
+        AudioManager.Instance.SfxObjectPickUp();
     }
 
     private void OnMouseUp()
@@ -68,6 +69,7 @@ public class Item : MonoBehaviour
                 transform.SetParent(initialParent);
                 OnDrop.Invoke();
                 spriteRenderer.sortingOrder = 0;
+                AudioManager.Instance.SfxObjectDrop();
             });
     }
 

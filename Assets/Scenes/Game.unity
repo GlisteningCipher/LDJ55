@@ -521,6 +521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 6535141490939661303, guid: 75c4709754d1e414688a3ace28fb10df, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 8141947297849208409, guid: 75c4709754d1e414688a3ace28fb10df, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
