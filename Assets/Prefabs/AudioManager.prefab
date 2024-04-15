@@ -2914,11 +2914,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4997257179843027765, guid: eb877b787993c2142adbd83ffb7ae7c6, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d99dfaf97c8a1ae40b0dc29ebcbd49ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 80c9d78978dacbd4aad7182f561ef40d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3712,3 +3712,5 @@ MonoBehaviour:
   _uiPaperButtonPress: {fileID: 915947250627070765}
   _uiPaperGoingBack: {fileID: 8840031115545470005}
   _uiPaperButtonHover: {fileID: 2750125374971952480}
+  State: 1
+  _musicLoopPointInSeconds: 10

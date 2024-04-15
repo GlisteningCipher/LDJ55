@@ -18,8 +18,13 @@ public class AudioManager : MonoBehaviour
     _uiMenuBack, _uiPause, _uiSelect, _uiStartGame,
     _uiPaperButtonPress, _uiPaperGoingBack, _uiPaperButtonHover;
 
-    public static AudioManager Instance;
+    public enum MusicState { Gameplay, MainMenu }
+    public MusicState State = MusicState.MainMenu;
 
+    [Header("Music loop settings")]
+    [SerializeField] private float _musicLoopPointInSeconds = 10f;
+
+    public static AudioManager Instance;
 
     public void Awake()
     {
@@ -29,27 +34,39 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         MusicMainMenuPlay();
+        State = MusicState.MainMenu;
+    }
+
+    void FixedUpdate()
+    {
+        if (State == MusicState.Gameplay && _musicGameplay.isPlaying == false)
+        {
+            _musicGameplay.Play();
+            _musicGameplay.time = _musicLoopPointInSeconds;
+        }
     }
 
     //* MUSIC
 
     public void MusicMainMenuPlay()
     {
-        _musicPiperMorgan.Play();
-        _musicHatricia.Stop();
+        _musicMenu.Play();
+        _musicGameplay.Stop();
+        State = MusicState.MainMenu;
     }
 
     /// <summary> Can also use just the other music pieces play method.</summary>
-    public void MusicMainMenuStop() => _musicPiperMorgan.Play();
+    public void MusicMainMenuStop() => _musicMenu.Stop();
 
     public void MusicGameplayPlay()
     {
-        _musicPiperMorgan.Stop();
-        _musicHatricia.Play();
+        _musicMenu.Stop();
+        _musicGameplay.Play();
+        State = MusicState.Gameplay;
     }
 
     /// <summary> Can also use just the other music pieces play method.</summary>
-    public void MusicGameplayStop() => _musicHatricia.Stop();
+    public void MusicGameplayStop() => _musicGameplay.Stop();
 
     //* SOUND EFFECTS
 
