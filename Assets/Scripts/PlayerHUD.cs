@@ -16,17 +16,47 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] float opacityMax = 1f;
 
     private Tween flashTween;
+    private Sequence neutralAnimation;
 
-    public void SetReaction(int reactionIndex)
+    public enum Reaction
     {
-        magicianImage.sprite = reactions[reactionIndex];
-        StartCoroutine(ResetReaction());
+       Neutral, Blink, Sad, Happy
     }
 
-    private IEnumerator ResetReaction()
+    private void Start()
     {
-        yield return new WaitForSeconds(1f);
-        magicianImage.sprite = reactions[0];
+        Neutral();
+    }
+
+    [ContextMenu("React Neutral")]
+    public void Neutral()
+    {
+        magicianImage.sprite = reactions[(int)Reaction.Neutral];
+        neutralAnimation = DOTween.Sequence()
+            .AppendInterval(5f)
+            .AppendCallback(Blink)
+            .SetLoops(-1, LoopType.Restart);
+    }
+    [ContextMenu("React Blink")]
+    public void Blink() => ReactForSeconds(Reaction.Blink, 0.1f);
+
+    [ContextMenu("React Sad")]
+    public void Sad() => ReactForSeconds(Reaction.Sad, 1.5f);
+
+    [ContextMenu("React Happy")]
+    public void Happy() => ReactForSeconds(Reaction.Happy, 1.5f);
+
+    public void ReactForSeconds(Reaction reaction, float seconds)
+    {
+        if (neutralAnimation.IsActive()) neutralAnimation.Kill();
+        magicianImage.sprite = reactions[(int)reaction];
+        StartCoroutine(ResetReaction(seconds));
+    }
+
+    private IEnumerator ResetReaction(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Neutral();
     }
 
     public void SetSpellRecipe(Sprite[] sprites)

@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
     {
         healthCount -= 1;
         onHealthChange.Invoke(healthCount);
+        BadPick.Invoke();
 
         if (healthCount == 0) OnLose.Invoke();
         else StartNewWave();
