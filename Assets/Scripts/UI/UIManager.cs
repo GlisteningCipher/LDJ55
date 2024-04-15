@@ -27,12 +27,6 @@ public class UIManager : MonoBehaviour
         _gameEndWinContainer.SetActive(false);
     }
 
-    [ContextMenu("Victory")]
-    public void TestWin()
-    {
-        WinGame("5");
-    }
-
     public void WinGame(string score)
     {
         AudioManager.Instance.SfxVictory();
