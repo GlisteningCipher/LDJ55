@@ -188,8 +188,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Clover - Production, Game Designer\nJustin - Programmer, Game Designer\n\rKene
     - Programmer, Technical Designer\nRene - Programmer\n\rFere - Audio/Music\n\rChris 
-    - Sound Designer, Musician\r\n\rCharlie - UX Designer, UI Artist, Artist\r\n\rMicro
-    - Character Artist, Game Designer"
+    - Sound Designer, Musician\r\nCharlie - UI/UX Designer, Artist\n\rMicro - Character
+    Artist, Game Designer"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4989ca1c3796c224a9ac6289985139c3, type: 2}
   m_sharedMaterial: {fileID: 1219231871160054099, guid: 4989ca1c3796c224a9ac6289985139c3, type: 2}
