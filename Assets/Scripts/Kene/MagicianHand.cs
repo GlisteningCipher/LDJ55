@@ -6,31 +6,23 @@ using UnityEngine;
 
 public class MagicianHand : MonoBehaviour
 {
+    public GameManager gameManager;
     public SpriteRenderer shadowAppearance;
     public GameObject handObject;
 
     public Collider2D itemGrabbed;
 
     [Header("Hand and Shadow Settings")]
-    public Vector3 farHandOffscreenOffset;
-    public Vector3 shadowStartSize;
-    public Vector3 shadowGrowthSize;
+    public Vector2 farHandOffscreenOffset;
+    public Vector2 shadowStartSize;
+    public Vector2 shadowGrowthSize;
     public float duration;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            GoToPosition(mouseWorld);
-
-        }
-    }
-
+    [ContextMenu("Fire Grab")]
     public void HandAppear()
     {
-        Vector2 height = new Vector3(shadowAppearance.transform.position.x, shadowAppearance.transform.position.y + farHandOffscreenOffset.y);
-        Vector2 upDirection = shadowAppearance.transform.position + farHandOffscreenOffset;
+        Vector2 height = new Vector2(shadowAppearance.transform.position.x, shadowAppearance.transform.position.y + farHandOffscreenOffset.y);
+        Vector2 upDirection = new Vector2(0, shadowAppearance.transform.position.y + farHandOffscreenOffset.y);
 
         handObject.transform.position = height;
 
@@ -38,11 +30,11 @@ public class MagicianHand : MonoBehaviour
         //Starting State
         seq.PrependInterval(5)
            .Append(shadowAppearance.transform.DOScale(shadowStartSize, duration))
-           .Append(handObject.transform.DOLocalMove(shadowAppearance.transform.position, duration).SetDelay(10))
+           .Append(handObject.transform.DOMove(shadowAppearance.transform.position, duration).SetDelay(10))
 
         //Grab n Drop State
            .Join(shadowAppearance.transform.DOScale(shadowGrowthSize, duration).OnStepComplete(ItemCollisionCheck))
-           .Append(handObject.transform.DOLocalMove(upDirection, duration).OnStepComplete(RemoveItemFromHand))
+           .Append(handObject.transform.DOMove(upDirection, duration).OnStepComplete(RemoveItemFromHand))
            .Join(shadowAppearance.transform.DOScale(Vector3.zero, duration))
            .Join(shadowAppearance.DOColor(new Color(0, 0, 0, 0), duration));
     }
@@ -58,6 +50,7 @@ public class MagicianHand : MonoBehaviour
             //results.Add(collider);
             results[0].transform.parent = handObject.transform;
             itemGrabbed = results[0];
+            gameManager.ItemInspection(itemGrabbed.GetComponent<Item>());
         }
         else
         {
@@ -71,9 +64,6 @@ public class MagicianHand : MonoBehaviour
         itemGrabbed = null;
     }
 
-    private void GoToPosition(Vector3 destionation)
-    {
-        transform.position = destionation;
-    }
+
 
 }
