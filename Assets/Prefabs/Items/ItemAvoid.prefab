@@ -80,10 +80,10 @@ MonoBehaviour:
   target: {fileID: 0}
   targetPlayer: 1
   lerpSpeed: 0.1
-  maxSpeed: 0.15
+  maxSpeed: 0.1
   detectionRadius: 3
   avoidTarget: 1
-  stunDuration: 2
+  stunDuration: 3
   bounds:
     m_Center: {x: -2.5, y: -0.25, z: 0}
     m_Extent: {x: 4.5, y: 3.25, z: 0}

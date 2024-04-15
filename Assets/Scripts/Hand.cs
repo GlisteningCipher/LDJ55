@@ -42,7 +42,7 @@ public class Hand : MonoBehaviour
             .AppendCallback(SequenceInit)
             .Append(GoToPosition(new Vector3(xRan, yRan))).AppendInterval(timeToShadow)
             .Append(RevealShadow()).AppendInterval(timeToGrab - 1f)
-            .AppendCallback(()=>AudioManager.Instance.SfxHandIncoming()).AppendInterval(1f)
+            .AppendCallback(AudioManager.Instance.SfxHandIncoming).AppendInterval(1f)
             .Append(LowerHand())
             .Join(MaximizeShadow()).AppendInterval(SMALL_WAIT_DURATION)
             .AppendCallback(GrabItem).AppendInterval(SMALL_WAIT_DURATION)
