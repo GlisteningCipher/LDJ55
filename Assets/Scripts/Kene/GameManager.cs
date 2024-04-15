@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        StartGame();
     }
 
     [ContextMenu("Start Game")]

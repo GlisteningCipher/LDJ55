@@ -338,10 +338,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2069945151362031109, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069945151362031109, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069945151362031109, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069945151362031109, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6536897457440135323, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
       propertyPath: m_Name
       value: MagicianHand
       objectReference: {fileID: 0}
+    - target: {fileID: 7612372324563973107, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c5b91509ee072d489cc1c646fc8d069, type: 3}
     - target: {fileID: 7751416900886109729, guid: 2308bea848e1cf346b35811f67936c09, type: 3}
       propertyPath: m_SortingLayer
       value: -1
