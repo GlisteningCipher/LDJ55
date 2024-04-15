@@ -50,6 +50,15 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         StartGame();
+
+        OnWin.AddListener(() => AudioManager.Instance.SfxVictory());
+        OnWin.AddListener(() => UIManager.Instance.WinGame(score: healthCount.ToString()));
+
+        OnLose.AddListener(() => AudioManager.Instance.SfxFailure());
+        OnLose.AddListener(() => UIManager.Instance.LoseGame(score: healthCount.ToString()));
+
+        GoodPick.AddListener(() => AudioManager.Instance.SfxGoodComponent());
+        BadPick.AddListener(() => AudioManager.Instance.SfxBadComponent());
     }
 
     [ContextMenu("Start Game")]
