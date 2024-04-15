@@ -11,6 +11,8 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] Vector2 bounds;
     [SerializeField] Vector2Int granularity;
 
+    List<Item> spawnedItems = new();
+
     Vector2 halfExtents => bounds * 0.5f;
     HashSet<(int, int)> spawnRecord = new();
 
@@ -41,10 +43,11 @@ public class ItemSpawner : MonoBehaviour
     public void ClearWave()
     {
         ResetSpawnRecord();
-        foreach (Transform child in transform)
+        foreach (var spawn in spawnedItems)
         {
-            Destroy(child.gameObject);
+            Destroy(spawn.gameObject);
         }
+        spawnedItems.Clear();
     }
 
     [ContextMenu("Test Wave")]
@@ -56,15 +59,11 @@ public class ItemSpawner : MonoBehaviour
 
     public void SpawnWave(GameObject itemPrefab, int amount, Sprite goodItemSprite, Sprite[] badItemSprites)
     {
-        Spawn(itemPrefab, 1, goodItemSprite); //spawn one good item
+        ClearWave();
+        Spawn(itemPrefab, 1, goodItemSprite, true); //spawn one good item
         amount -= 1;
-        //for (int i = 0; i < badItemSprites.Length; i++)
-        //{
-        //    var deductionAmount = Random.Range(0, amount + 1);
-        //    if (i == badItemSprites.Length - 1) deductionAmount = amount;
-        //    Spawn(itemPrefab, deductionAmount, badItemSprites[i]);
-        //    amount -= deductionAmount;
-        //}
+
+        //spawn bad items
         int[] amounts = new int[badItemSprites.Length];
         while (amount > 0)
         {
@@ -73,12 +72,11 @@ public class ItemSpawner : MonoBehaviour
         }
         for (int i = 0; i < amounts.Length; i++)
         {
-            Spawn(itemPrefab, amounts[i], badItemSprites[i]);
+            Spawn(itemPrefab, amounts[i], badItemSprites[i], false);
         }
-
     }
 
-    public void Spawn(GameObject itemPrefab, int amount, Sprite spr)
+    public void Spawn(GameObject itemPrefab, int amount, Sprite spr, bool isGood)
     {
         int loopSafety = 100;
         while (amount > 0 && --loopSafety >= 0)
@@ -91,8 +89,11 @@ public class ItemSpawner : MonoBehaviour
 
             Vector2 randomPos = (Vector2)transform.position - halfExtents + new Vector2(xOff, yOff) * bounds / granularity;
             Vector2 unitOffset = bounds / granularity * 0.5f;
-            var item = Instantiate(itemPrefab, randomPos + unitOffset, Quaternion.identity, transform);
-            item.GetComponent<Item>().SetSprite(spr);
+            var itemObject = Instantiate(itemPrefab, randomPos + unitOffset, Quaternion.identity, transform);
+            var itemScript = itemObject.GetComponent<Item>();
+            itemScript.SetSprite(spr);
+            itemScript.IsGood = isGood;
+            spawnedItems.Add(itemScript);
             --amount;
         }
         
@@ -100,7 +101,7 @@ public class ItemSpawner : MonoBehaviour
         {
             Debug.LogWarning("Spawn record cleared due to too many collisions. Consider spawning fewer items or increasing granularity.");
             ResetSpawnRecord();
-            Spawn(itemPrefab, amount, spr);
+            Spawn(itemPrefab, amount, spr, isGood);
         }
     }
 

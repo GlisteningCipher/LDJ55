@@ -1,41 +1,31 @@
-using System.Collections;
+//using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Linq;
+//using UnityEngine.UI;
+//using System.Linq;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [Header("Object References")]
     [SerializeField] PlayerHUD playerHUD;
+    [SerializeField] Hand magicianHand;
+    [SerializeField] ItemSpawner spawner;
 
-    [Header("Game Loop Property Settings")]
+    [Header("Data Containers")]
     [SerializeField] Spell[] allSpells;
     [SerializeField] List<Sprite> allItemSprites;
 
-    public UnityEvent onHealthChange;
-
-    [Header("Game References")]
-    public MagicianHand magicHand;
-    public ItemSpawner spawner;
-
-    //public float timeValue = 5;
-    //public bool dropTimerRunning = true;
-
-    [Header("Condition Events")]
+    [Header("Game Events")]
+    public UnityEvent<float> onHealthChange;
     public UnityEvent OnWin;
     public UnityEvent OnLose;
     public UnityEvent GoodPick;
     public UnityEvent BadPick;
 
-    [Header("Floor Settings")]
-    [SerializeField] private float minWidthFloor;
-    [SerializeField] private float maxWidthFloor;
-    [SerializeField] private float minHeightFloor;
-    [SerializeField] private float maxHeightFloor;
-
-
+    private const int wavesPerSpell = 3;
 
     private const int startingHealth = 5;
     private const int maxHealth = 10;
@@ -45,6 +35,16 @@ public class GameManager : MonoBehaviour
     private int currentWave = 0;
 
     private Sprite[] currentRecipe;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+    }
 
     [ContextMenu("Start Game")]
     public void StartGame()
@@ -57,25 +57,22 @@ public class GameManager : MonoBehaviour
 
     private void StartNewWave()
     {
-        Debug.Log("StartNewWave");
-        var spell = allSpells[currentSpell];
-        var wave = spell.waves[currentWave];
-
-        //go to next spell if finished all waves
-        if (currentWave == spell.waves.Length)
-        {
-            currentWave = 0;
-            currentSpell += 1;
-        }
 
         //create new recipe at start of each spell
-        if (currentSpell == 0)
+        if (currentWave == 0)
         {
             currentRecipe = GetNewRecipe();
             playerHUD.SetSpellRecipe(currentRecipe);
         }
 
-        //exit game loop
+        //go to next spell if finished all waves
+        if (currentWave == allSpells[0].waves.Length)
+        {
+            currentWave = 0;
+            currentSpell += 1;
+        }
+
+        //exit game loop if all spells finished
         if (currentSpell == allSpells.Length)
         {
             OnWin.Invoke();
@@ -87,41 +84,37 @@ public class GameManager : MonoBehaviour
         var goodItemIndex = badItems.IndexOf(goodItemSprite);
         badItems.RemoveAt(goodItemIndex);
 
+        var spell = allSpells[currentSpell];
+        var wave = spell.waves[currentWave];
         spawner.SpawnWave(wave.item, wave.amount, goodItemSprite, badItems.ToArray());
         playerHUD.SetFlash(currentWave);
-
-        magicHand.transform.position = PlaceLocationOnShadow();
-        magicHand.HandAppear();
+        magicianHand.GrabRandomSpot();
     }
 
     public Sprite[] GetNewRecipe()
     {
-        var recipe = new Sprite[3];
-        for (int i = 0; i < 3; i++)
+        var recipe = new Sprite[wavesPerSpell];
+        for (int i = 0; i < wavesPerSpell; i++)
         {
             recipe[i] = allItemSprites[Random.Range(0, allItemSprites.Count)];
         }
         return recipe;
     }
 
-    public void ItemInspection(Item item)
+    public void ProcessGrabbedItem(Item item)
     {
-        Debug.Log("Inspect");
-        if (item.IsGood)
-        {
-            Debug.Log("Good");
-            GoodOutcome();
-        }
-        else
-        {
-            Debug.Log("Bad");
-            BadOutcome();
-        }
+        if (item != null && item.IsGood) GoodOutcome();
+        else BadOutcome();
     }
 
     public void GoodOutcome()
     {
-        healthCount = Mathf.Min(healthCount+1, maxHealth);
+        //only increase on final wave success
+        if (currentWave == wavesPerSpell)
+        {
+            healthCount = Mathf.Min(healthCount + 1, maxHealth);
+            onHealthChange.Invoke(healthCount);
+        }
         currentWave += 1;
         GoodPick.Invoke();
         StartNewWave();
@@ -130,28 +123,9 @@ public class GameManager : MonoBehaviour
     public void BadOutcome()
     {
         healthCount -= 1;
+        onHealthChange.Invoke(healthCount);
 
-        if (healthCount == 0)
-        {
-            OnLose.Invoke();
-        }
-        else
-        {
-            StartNewWave();
-        }
-    }
-
-    public Vector2 PlaceLocationOnShadow()
-    {
-        Vector2 spawnPos;
-
-        float xRandom = UnityEngine.Random.Range(minWidthFloor, maxWidthFloor); //Grab min and max floor size values on X-AXIS
-        float yRandom = UnityEngine.Random.Range(minHeightFloor, maxHeightFloor); //Grab min and max floor size values on Z-AXIS
-
-        spawnPos = new Vector2(xRandom, yRandom); //Generating a spawn position for the enemy
-
-        print(spawnPos);
-
-        return spawnPos;
+        if (healthCount == 0) OnLose.Invoke();
+        else StartNewWave();
     }
 }

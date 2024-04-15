@@ -1,42 +1,122 @@
 //using System.Collections;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class Hand : MonoBehaviour
 {
+    [Header("Object References")]
     [SerializeField] GameObject hand;
+    [SerializeField] SpriteRenderer shadow;
+    [SerializeField] Collider2D grabArea;
+
+    [Header("AnimationSettings")]
     [SerializeField] Vector3 loweredPosition;
     [SerializeField] Vector3 raisedPosition;
-    [SerializeField] float tweenDuration = 2f;
+    [SerializeField] float tweenDuration = 1f;
+    [SerializeField] Bounds bounds;
 
-    private Tween tween;
+    private const float SMALL_WAIT_DURATION = 0.1f;
 
-    [ContextMenu("Lower")]
-    private void Lower()
+    private Item currentItem;
+
+    private Sequence grabSequence;
+
+    private void OnDestroy()
     {
-        if (tween.IsActive()) tween.Complete();
-        tween = hand.transform.DOLocalMove(loweredPosition, tweenDuration).From(raisedPosition);
+        if (grabSequence.IsActive()) grabSequence.Kill();
     }
 
-    [ContextMenu("Raise")]
-    private void Raise()
+    [ContextMenu("Grab Random Spot")]
+    public void GrabRandomSpot()
     {
-        if (tween.IsActive()) tween.Complete();
-        tween = hand.transform.DOLocalMove(raisedPosition, tweenDuration).From(loweredPosition);
+        var xMin = bounds.center.x - bounds.extents.x;
+        var xMax = bounds.center.x + bounds.extents.x;
+        var yMin = bounds.center.y - bounds.extents.y;
+        var yMax = bounds.center.y + bounds.extents.y;
+
+        var xRan = Random.Range(xMin, xMax);
+        var yRan = Random.Range(yMin, yMax);
+
+        grabSequence = DOTween.Sequence()
+            .AppendCallback(SequenceInit)
+            .Append(GoToPosition(new Vector3(xRan, yRan))).AppendInterval(2f)
+            .Append(RevealShadow()).AppendInterval(2f)
+            .Append(LowerHand())
+            .Join(MaximizeShadow()).AppendInterval(SMALL_WAIT_DURATION)
+            .AppendCallback(GrabItem).AppendInterval(SMALL_WAIT_DURATION)
+            .Append(RaiseHand())
+            .Join(HideShadow())
+            .AppendCallback(ProcessItem);
     }
 
-    private void GoToPosition(Vector3 destionation)
+    private void SequenceInit()
     {
-        throw new System.NotImplementedException();
+        hand.transform.localPosition = raisedPosition;
+        shadow.DOFade(0f, 0f);
     }
 
-    //private void Start()
-    //{
-    //    float t = 0;
-    //    DOTween.To(()=>t, v=>t=v, 2f, 5f)
-    //        .OnPlay(() => Debug.Log("play"))
-    //        .OnUpdate(() => Debug.Log("update"))
-    //        .OnComplete(()=>Debug.Log("complete"));
-    //}
+    private Tween LowerHand()
+    {
+        return hand.transform.DOLocalMove(loweredPosition, tweenDuration);
+    }
+
+    private Tween RaiseHand()
+    {
+        return hand.transform.DOLocalMove(raisedPosition, tweenDuration);
+    }
+
+    private Tween RevealShadow()
+    {
+        return shadow.DOFade(0.2f, tweenDuration);
+    }
+
+    private Tween MaximizeShadow()
+    {
+        return shadow.DOFade(0.8f, tweenDuration);
+    }
+
+    private Tween HideShadow()
+    {
+        return shadow.DOFade(0f, tweenDuration);
+    }
+
+    private Tween GoToPosition(Vector3 destination)
+    {
+        return transform.DOMove(destination, 1f);
+    }
+
+    private void GrabItem()
+    {
+        ContactFilter2D contactFilter = new ContactFilter2D().NoFilter();
+        List<Collider2D> overlappingColliders = new List<Collider2D>();
+
+        if (grabArea.OverlapCollider(contactFilter, overlappingColliders) > 0)
+        {
+            float minDistance = Mathf.Infinity;
+            Collider2D closestCollider = null;
+            foreach (var col in overlappingColliders)
+            {
+                var distance = (col.transform.position - grabArea.transform.position).magnitude;
+                if (minDistance > distance)
+                {
+                    closestCollider = col;
+                    minDistance = distance;
+                }
+            }
+            closestCollider.transform.SetParent(hand.transform);
+            currentItem = closestCollider.GetComponent<Item>();
+
+            //disable autonomous movement after grabbed
+            if (currentItem.TryGetComponent<ItemWander>(out var wander)) Destroy(wander);
+            if (currentItem.TryGetComponent<ItemTaxis>(out var taxis)) Destroy(taxis);
+        }
+    }
+
+    private void ProcessItem()
+    {
+        GameManager.Instance.ProcessGrabbedItem(currentItem);
+        currentItem = null;
+    }
+
 }
