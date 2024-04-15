@@ -58,12 +58,22 @@ public class ItemSpawner : MonoBehaviour
     {
         Spawn(itemPrefab, 1, goodItemSprite); //spawn one good item
         amount -= 1;
-        for (int i = 0; i < badItemSprites.Length; i++)
+        //for (int i = 0; i < badItemSprites.Length; i++)
+        //{
+        //    var deductionAmount = Random.Range(0, amount + 1);
+        //    if (i == badItemSprites.Length - 1) deductionAmount = amount;
+        //    Spawn(itemPrefab, deductionAmount, badItemSprites[i]);
+        //    amount -= deductionAmount;
+        //}
+        int[] amounts = new int[badItemSprites.Length];
+        while (amount > 0)
         {
-            var deductionAmount = Random.Range(0, amount + 1);
-            if (i == badItemSprites.Length - 1) deductionAmount = amount;
-            Spawn(itemPrefab, deductionAmount, badItemSprites[i]);
-            amount -= deductionAmount;
+            amounts[Random.Range(0, amounts.Length)] += 1;
+            amount -= 1;
+        }
+        for (int i = 0; i < amounts.Length; i++)
+        {
+            Spawn(itemPrefab, amounts[i], badItemSprites[i]);
         }
 
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Spell1Static2
   m_EditorClassIdentifier: 
   item: {fileID: 4972710906401962870, guid: d4308dfb5420f14429a2c259d176bb2d, type: 3}
-  amount: 5
+  amount: 10
   timeToShadow: 5
   timeToGrab: 10

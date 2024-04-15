@@ -16,6 +16,7 @@ public class Item : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
 
     private Transform initialParent;
+    private Tween spawnTween;
     private Tween carryTween;
     private Transform t;
 
@@ -27,11 +28,17 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        transform.DOMoveY(transform.position.y, 1f).From(transform.position.y + 10).SetEase(Ease.OutCubic).SetDelay(Random.Range(0, maxSpawnDelay))
+        spawnTween = transform.DOMoveY(transform.position.y, 1f).From(transform.position.y + 10).SetEase(Ease.OutCubic).SetDelay(Random.Range(0, maxSpawnDelay))
             .OnComplete(() =>
             {
                 OnDrop.Invoke();
             });
+    }
+
+    private void OnDestroy()
+    {
+        if (spawnTween.IsActive()) spawnTween.Kill();
+        if (carryTween.IsActive()) spawnTween.Kill();
     }
 
     private void OnMouseDown()
