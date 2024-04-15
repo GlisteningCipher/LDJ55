@@ -103,9 +103,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 194338289
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_FlipX: 0
@@ -198,12 +198,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d7160908f0194f8fa8f7f2efb3226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   shadowAppearance: {fileID: 6449148016200669175}
   handObject: {fileID: 3519484685636071226}
   itemGrabbed: {fileID: 0}
-  farHandOffscreenOffset: {x: 0, y: 10, z: 0}
-  shadowStartSize: {x: 1, y: 0.5, z: 1}
-  shadowGrowthSize: {x: 1.8, y: 0.9, z: 1.8}
+  farHandOffscreenOffset: {x: 0, y: 10}
+  shadowStartSize: {x: 1, y: 0.5}
+  shadowGrowthSize: {x: 1.8, y: 0.9}
   duration: 1
 --- !u!1 &7664371333808511312
 GameObject:

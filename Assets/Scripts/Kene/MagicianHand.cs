@@ -61,7 +61,7 @@ public class MagicianHand : MonoBehaviour
     public void RemoveItemFromHand()
     {
         itemGrabbed.transform.parent = null;
-        itemGrabbed = null;
+        //itemGrabbed = null;
     }
 
 
