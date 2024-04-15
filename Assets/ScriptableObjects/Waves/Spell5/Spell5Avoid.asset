@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 3971962558333372262, guid: 231befd4c09d4d241a07da8a6673f8b7, type: 3}
   amount: 30
-  timeToShadow: 5
-  timeToGrab: 10
+  timeToShadow: 2
+  timeToGrab: 2

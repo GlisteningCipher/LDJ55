@@ -16,7 +16,7 @@ public class Hand : MonoBehaviour
     [SerializeField] float tweenDuration = 1f;
     [SerializeField] Bounds bounds;
 
-    private const float SMALL_WAIT_DURATION = 0.1f;
+    private const float SMALL_WAIT_DURATION = 0.2f;
 
     private Item currentItem;
 
@@ -28,7 +28,7 @@ public class Hand : MonoBehaviour
     }
 
     [ContextMenu("Grab Random Spot")]
-    public void GrabRandomSpot()
+    public void GrabRandomSpot(float timeToShadow, float timeToGrab)
     {
         var xMin = bounds.center.x - bounds.extents.x;
         var xMax = bounds.center.x + bounds.extents.x;
@@ -40,8 +40,8 @@ public class Hand : MonoBehaviour
 
         grabSequence = DOTween.Sequence()
             .AppendCallback(SequenceInit)
-            .Append(GoToPosition(new Vector3(xRan, yRan))).AppendInterval(2f)
-            .Append(RevealShadow()).AppendInterval(2f)
+            .Append(GoToPosition(new Vector3(xRan, yRan))).AppendInterval(timeToShadow)
+            .Append(RevealShadow()).AppendInterval(timeToGrab)
             .Append(LowerHand())
             .Join(MaximizeShadow()).AppendInterval(SMALL_WAIT_DURATION)
             .AppendCallback(GrabItem).AppendInterval(SMALL_WAIT_DURATION)

@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         var wave = spell.waves[currentWave];
         spawner.SpawnWave(wave.item, wave.amount, goodItemSprite, badItems.ToArray());
         playerHUD.SetFlash(currentWave);
-        magicianHand.GrabRandomSpot();
+        magicianHand.GrabRandomSpot(wave.timeToShadow, wave.timeToGrab);
     }
 
     public Sprite[] GetNewRecipe()
