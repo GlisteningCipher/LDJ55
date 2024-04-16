@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
         _dimmerPanel.SetActive(true);
         State = MenuState.Paused;
+        // Time.timeScale = 0;
     }
 
     public void BUTTON_ResumeClosePauseMenu()
@@ -66,6 +67,7 @@ public class MainMenu : MonoBehaviour
             State = MenuState.Playing;
             _pauseContainer.SetActive(false);
             _dimmerPanel.SetActive(false);
+            // Time.timeScale = 1;
         });
     }
 
@@ -96,7 +98,9 @@ public class MainMenu : MonoBehaviour
         _dimmerPanelBlockingPause.SetActive(false);
 
         State = MenuState.Playing;
-        // todo game logic because we are leaving from the gameplay view
+        
+        SceneLoader.Instance.UnloadGameScene();
+        AudioManager.Instance.MusicMainMenuPlay();
     }
 
     public void BUTTON_SettingsOpen()

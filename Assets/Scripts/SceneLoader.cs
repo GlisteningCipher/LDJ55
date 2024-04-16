@@ -45,4 +45,9 @@ public class SceneLoader : MonoBehaviour
             print("done loading level, it took " + timer.ElapsedMilliseconds / 1000f + " seconds");
         }
     }
+
+    public void UnloadGameScene()
+    {
+        AsyncOperation asyncUnload = SceneManager.LoadSceneAsync("EmptyScene");
+    }
 }
