@@ -30,7 +30,7 @@ public class Familiar : MonoBehaviour
     {
         Vector2 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 destination = playerBounds.ClosestPoint(mouseWorld);
-        transform.position = Vector2.Lerp(transform.position, destination + lerpOffset, lerpSpeed);
+        transform.position = Vector2.Lerp(transform.position, destination + lerpOffset, lerpSpeed * Time.deltaTime);
     }
 
 }
