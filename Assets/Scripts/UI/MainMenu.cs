@@ -42,6 +42,8 @@ public class MainMenu : MonoBehaviour
         if (State == MenuState.Paused)
             return;
 
+        GameTime.Instance.Pause();
+
         AudioManager.Instance.SfxUiPause();
         Settings.Instance.MuffleMusic();
 
@@ -56,8 +58,9 @@ public class MainMenu : MonoBehaviour
 
     public void BUTTON_ResumeClosePauseMenu()
     {
-        // AudioManager.Instance.SfxUiMenuBack();
-        AudioManager.Instance.SfxPaperGoBack();
+        GameTime.Instance.Unpause();
+
+        AudioManager.Instance.SfxPaperGoBack(); // todo or SfxPaperPressButton 
 
         Settings.Instance.UnMuffleMusic();
 
@@ -74,12 +77,14 @@ public class MainMenu : MonoBehaviour
     public void BUTTON_StartGame()
     {
         AudioManager.Instance.SfxUiStartGame();
+        // todo for each button disable
         DOVirtual.DelayedCall(0.5f, () =>
         {
             _mainMenuContainer.SetActive(false);
             SceneLoader.Instance.LoadGameScene();
             AudioManager.Instance.MusicGameplayPlay();
             // DOVirtual.DelayedCall(2f, () => GameManager.Instance.StartGame());
+            GameTime.Instance.Unpause();
         });
     }
 
@@ -87,6 +92,8 @@ public class MainMenu : MonoBehaviour
     {
         // AudioManager.Instance.SfxUiMenuBack();
         AudioManager.Instance.SfxPaperGoBack();
+
+        // todo for each button enable
 
         Settings.Instance.UnMuffleMusic();
 
