@@ -716,10 +716,64 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724720992382523825}
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4777312899774197447}
   m_SourcePrefab: {fileID: 100100000, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
 --- !u!224 &8843728135831526369 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4574548693709102525, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
   m_PrefabInstance: {fileID: 5028044884949304924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9081510202005944456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+  m_PrefabInstance: {fileID: 5028044884949304924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1724720992382523825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9081510202005944456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4777312899774197447}
+          m_TargetAssemblyTypeName: TweenButtonFeedback, Assembly-CSharp
+          m_MethodName: EVENT_SfxUIPaperHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &4777312899774197447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9081510202005944456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a704837a96da5c43b0ccba8110e5e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSpeed: 0.5
+  _activeColor: {r: 0, g: 1, b: 0, a: 1}

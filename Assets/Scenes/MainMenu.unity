@@ -128,6 +128,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8763190542410867191, guid: 60bf8055977322747801a2c7309edd4e, type: 3}
   m_PrefabInstance: {fileID: 6453590411662091388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &222190452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+  m_PrefabInstance: {fileID: 365730933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &263739924
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,13 +402,62 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 365730939}
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 365730938}
   m_SourcePrefab: {fileID: 100100000, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
 --- !u!224 &365730934 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4574548693709102525, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
   m_PrefabInstance: {fileID: 365730933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &365730938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222190452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a704837a96da5c43b0ccba8110e5e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSpeed: 0.5
+  _activeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &365730939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222190452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 365730938}
+          m_TargetAssemblyTypeName: TweenButtonFeedback, Assembly-CSharp
+          m_MethodName: EVENT_SfxUIPaperHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &555436973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,7 +597,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557820356}
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557820355}
   m_SourcePrefab: {fileID: 100100000, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
 --- !u!224 &555436974 stripped
 RectTransform:
@@ -735,7 +795,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1100376828}
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1100376827}
   m_SourcePrefab: {fileID: 100100000, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
 --- !u!224 &792974906 stripped
 RectTransform:
@@ -929,6 +995,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1100376823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+  m_PrefabInstance: {fileID: 792974905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1100376827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100376823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a704837a96da5c43b0ccba8110e5e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSpeed: 0.5
+  _activeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1100376828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100376823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1100376827}
+          m_TargetAssemblyTypeName: TweenButtonFeedback, Assembly-CSharp
+          m_MethodName: EVENT_SfxUIPaperHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1266680970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+  m_PrefabInstance: {fileID: 5814288989224636159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1403358543 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1003603563643754436, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
@@ -956,6 +1075,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1557820351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+  m_PrefabInstance: {fileID: 555436973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1557820355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557820351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a704837a96da5c43b0ccba8110e5e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSpeed: 0.5
+  _activeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1557820356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557820351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1557820355}
+          m_TargetAssemblyTypeName: TweenButtonFeedback, Assembly-CSharp
+          m_MethodName: EVENT_SfxUIPaperHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &1563974746 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6344648809396663398, guid: 2d7650bec2b3e3648bcb4b979c6aabc7, type: 3}
@@ -1352,13 +1519,62 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5814288989224636165}
+    - targetCorrespondingSourceObject: {fileID: 4309721948763061972, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5814288989224636164}
   m_SourcePrefab: {fileID: 100100000, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
 --- !u!224 &5814288989224636160 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4574548693709102525, guid: 800adc95ee031e544b9905dc1a0c2bf5, type: 3}
   m_PrefabInstance: {fileID: 5814288989224636159}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5814288989224636164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266680970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a704837a96da5c43b0ccba8110e5e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSpeed: 0.5
+  _activeColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &5814288989224636165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266680970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5814288989224636164}
+          m_TargetAssemblyTypeName: TweenButtonFeedback, Assembly-CSharp
+          m_MethodName: EVENT_SfxUIPaperHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &6453590411662091388
 PrefabInstance:
   m_ObjectHideFlags: 0

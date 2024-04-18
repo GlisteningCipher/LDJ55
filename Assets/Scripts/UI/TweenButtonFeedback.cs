@@ -16,6 +16,7 @@ public class TweenButtonFeedback : MonoBehaviour
         transform.DOKill();
         transform.DOScale(Vector3.one * 1.1f, _animationSpeed);
         transform.GetComponentInChildren<TMP_Text>().DOColor(_activeColor, _animationSpeed);
+        EVENT_SfxUIPaperHover();
         // problems with killing sequence that is not saved
         // Sequence sequence = DOTween.Sequence();
         // sequence
@@ -42,6 +43,11 @@ public class TweenButtonFeedback : MonoBehaviour
         var scaleMin = 0.8f;
         transform.DOKill();
         transform.DOScale(Vector3.one * scaleMin, time).OnComplete(() => transform.DOScale(1, time));
+    }
+
+    public void EVENT_SfxUIPaperHover()
+    {
+        AudioManager.Instance.SfxPaperHover();
     }
 
 }

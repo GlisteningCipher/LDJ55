@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
     [ContextMenu("Open Pause Menu")]
     public void OpenPauseMenu()
     {
-        if (State == MenuState.Paused)
+        if (State == MenuState.Paused || AudioManager.Instance.State == AudioManager.MusicState.MainMenu)
             return;
 
         GameTime.Instance.Pause();
@@ -105,7 +105,7 @@ public class MainMenu : MonoBehaviour
         _dimmerPanelBlockingPause.SetActive(false);
 
         State = MenuState.Playing;
-        
+
         SceneLoader.Instance.UnloadGameScene();
         AudioManager.Instance.MusicMainMenuPlay();
     }
